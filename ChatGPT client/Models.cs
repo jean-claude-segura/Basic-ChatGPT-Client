@@ -29,7 +29,7 @@ namespace ChatGPT_client
     {
         public string Id { get; set; }
         public string Object { get; set; }
-        public string Created { get; set; }
+        public long Created { get; set; }
         public bool Allow_create_engine { get; set; }
         public bool Allow_sampling { get; set; }
         public bool Allow_logprobs { get; set; }
@@ -70,6 +70,7 @@ namespace ChatGPT_client
     {
         public string Id { get; set; }
         public string Object { get; set; }
+        public long Created { get; set; }
         public string Owned_by { get; set; }
         public List<Permission> Permission { get; set; } = new();
         public string Root { get; set; }

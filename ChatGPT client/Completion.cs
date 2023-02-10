@@ -42,7 +42,7 @@ namespace ChatGPT_client
     {
         public string Id { get; set; }
         public string Object { get; set; }
-        public string Created { get; set; }
+        public long Created { get; set; }
         public string Model { get; set; }
         public List<Choice> Choices = new();
         public Usage Usage { get; set; }
