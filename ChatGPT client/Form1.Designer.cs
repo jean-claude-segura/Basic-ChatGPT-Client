@@ -1,6 +1,6 @@
 ﻿namespace ChatGPT_client
 {
-    partial class Form1
+    partial class FormChatGPT
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormChatGPT));
             this.rtbChat = new System.Windows.Forms.RichTextBox();
             this.tbSaisie = new System.Windows.Forms.TextBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
@@ -51,7 +51,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panelApiKey = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonDeleteApiKey = new System.Windows.Forms.Button();
             this.buttonLoadApiKey = new System.Windows.Forms.Button();
             this.buttonShowApiKey = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -325,7 +325,7 @@
             // panelApiKey
             // 
             this.panelApiKey.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panelApiKey.Controls.Add(this.button1);
+            this.panelApiKey.Controls.Add(this.buttonDeleteApiKey);
             this.panelApiKey.Controls.Add(this.buttonLoadApiKey);
             this.panelApiKey.Controls.Add(this.buttonShowApiKey);
             this.panelApiKey.Controls.Add(this.label1);
@@ -336,15 +336,16 @@
             this.panelApiKey.Size = new System.Drawing.Size(754, 53);
             this.panelApiKey.TabIndex = 17;
             // 
-            // button1
+            // buttonDeleteApiKey
             // 
-            this.button1.BackgroundImage = global::ChatGPT_client.Properties.Resources.trash;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Location = new System.Drawing.Point(714, 9);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(29, 29);
-            this.button1.TabIndex = 20;
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonDeleteApiKey.BackgroundImage = global::ChatGPT_client.Properties.Resources.trash;
+            this.buttonDeleteApiKey.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonDeleteApiKey.Location = new System.Drawing.Point(714, 9);
+            this.buttonDeleteApiKey.Name = "buttonDeleteApiKey";
+            this.buttonDeleteApiKey.Size = new System.Drawing.Size(29, 29);
+            this.buttonDeleteApiKey.TabIndex = 20;
+            this.buttonDeleteApiKey.UseVisualStyleBackColor = true;
+            this.buttonDeleteApiKey.Click += new System.EventHandler(this.buttonDeleteApiKey_Click);
             // 
             // buttonLoadApiKey
             // 
@@ -431,7 +432,7 @@
             this.richTextBoxInformations.TabIndex = 0;
             this.richTextBoxInformations.Text = resources.GetString("richTextBoxInformations.Text");
             // 
-            // Form1
+            // FormChatGPT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -441,7 +442,7 @@
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.statusStrip1);
             this.DoubleBuffered = true;
-            this.Name = "Form1";
+            this.Name = "FormChatGPT";
             this.Text = "Chat - J\'ai pété!";
             this.Shown += new System.EventHandler(this.Form1_Shown);
             this.tabControl.ResumeLayout(false);
@@ -491,7 +492,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonSaveApiKey;
         private System.Windows.Forms.TextBox textBoxApiKey;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonDeleteApiKey;
     }
 }
 
