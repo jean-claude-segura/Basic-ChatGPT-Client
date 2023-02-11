@@ -17,6 +17,8 @@ namespace ChatGPT_client
 {
     public class ChatGPTInstance
     {
+        static private Models? _Models = null;
+        static public Models Models { get { return _Models; } }
         static private List<string> _completions = new List<string>();
         static public List<string> Completions { get => _completions; }
         static private string? _openAIApiKey { get; set; } = null;
@@ -55,41 +57,36 @@ namespace ChatGPT_client
         static public bool isApiKeyOk() => !string.IsNullOrWhiteSpace(_openAIApiKey);
 
 
-        static public Models? GetModels()
+        static public void GetModels()
         {
-            if (!isApiKeyOk())
-                return null;
-            var apiCall = "https://api.openai.com/v1/models";
-            try
+            if (isApiKeyOk())
             {
-                using (var httpClient = new HttpClient())
+                var apiCall = "https://api.openai.com/v1/models";
+                try
                 {
-                    using (var request = new HttpRequestMessage(new HttpMethod("GET"), apiCall))
+                    using (var httpClient = new HttpClient())
                     {
-                        request.Headers.TryAddWithoutValidation("Authorization", "Bearer " + _openAIApiKey);
-
-                        var response = httpClient.SendAsync(request).Result;
-
-                        var json = response.Content.ReadAsStringAsync().Result;
-
-                        // Pour historique :
-                        _completions.Add(JsonConvert.SerializeObject(JsonConvert.DeserializeObject<dynamic>(json), Formatting.Indented));
-
-                        Models deserializedResponse = JsonConvert.DeserializeObject<Models>(json);
-
-                        if (deserializedResponse is not null)
+                        using (var request = new HttpRequestMessage(new HttpMethod("GET"), apiCall))
                         {
-                            return deserializedResponse;
+                            request.Headers.TryAddWithoutValidation("Authorization", "Bearer " + _openAIApiKey);
+
+                            var response = httpClient.SendAsync(request).Result;
+
+                            var json = response.Content.ReadAsStringAsync().Result;
+
+                            // Pour historique :
+                            _completions.Add(JsonConvert.SerializeObject(JsonConvert.DeserializeObject<dynamic>(json), Formatting.Indented));
+
+                            _Models = JsonConvert.DeserializeObject<Models>(json);
+
                         }
                     }
                 }
+                catch (Exception ex)
+                {
+                    _completions.Add(ex.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                _completions.Add(ex.Message);
-                return null;
-            }
-            return null;
         }
 
         private Completion? GetCompletion(Message message)

@@ -14,6 +14,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static ChatGPT_client.FormChatGPT;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Timer = System.Windows.Forms.Timer;
@@ -26,6 +27,8 @@ namespace ChatGPT_client
         public UpdateRichTextListBox1 updateRichTextListBox1;
         public delegate void UpdateRichTextListBox2(List<string> responses);
         public UpdateRichTextListBox2 updateRichTextListBox2;
+        public delegate void UpdateComboBoxModels(string[] models);
+        public UpdateComboBoxModels updateComboBoxModels;
         private Thread thrChatGPTInstance;
 
         public void UpdateRichTextListBox1Method(Completion? response)
@@ -87,6 +90,15 @@ namespace ChatGPT_client
             rtbConsole.ScrollToCaret();
         }
 
+        public void UpdateComboBoxModelsMethod(string[] modelsIds)
+        {
+            comboBoxModels.Items.Clear();
+            comboBoxModels.Items.AddRange(modelsIds);
+            if (!string.IsNullOrWhiteSpace(_chatGPTAPIs.Model))
+                comboBoxModels.SelectedItem = _chatGPTAPIs.Model;
+
+        }
+
         private readonly ChatGPTInstance _chatGPTAPIs = new ChatGPTInstance();
         private string ApiKey = string.Empty;
 
@@ -95,6 +107,7 @@ namespace ChatGPT_client
             InitializeComponent();
             updateRichTextListBox1 = new UpdateRichTextListBox1(UpdateRichTextListBox1Method);
             updateRichTextListBox2 = new UpdateRichTextListBox2(UpdateRichTextListBox2Method);
+            updateComboBoxModels = new UpdateComboBoxModels(UpdateComboBoxModelsMethod);
 
             LoadApiKey();
 
@@ -110,6 +123,7 @@ namespace ChatGPT_client
             ChatGPTInstance.setApiKey(ApiKey);
             ChatGPTInstance.GetModels();
             Invoke(updateRichTextListBox2, new Object[] { ChatGPTInstance.Completions });
+            if(ChatGPTInstance.Models is not null && ChatGPTInstance.Models.Data is not null) Invoke(updateComboBoxModels, new Object[] { ChatGPTInstance.Models.Data.Select(_ => _.Id).ToArray() });
 
             textBoxApiKey.PasswordChar = '*';
             buttonShowApiKey.BackgroundImage = global::ChatGPT_client.Properties.Resources.eye;
@@ -252,6 +266,7 @@ namespace ChatGPT_client
             ChatGPTInstance.setApiKey(ApiKey);
             ChatGPTInstance.GetModels();
             Invoke(updateRichTextListBox2, new Object[] { ChatGPTInstance.Completions });
+            if(ChatGPTInstance.Models is not null && ChatGPTInstance.Models.Data is not null) Invoke(updateComboBoxModels, new Object[] { ChatGPTInstance.Models.Data.Select(_ => _.Id).ToArray() });
 
             this.Enabled = true;
         }
@@ -267,7 +282,7 @@ namespace ChatGPT_client
             ChatGPTInstance.setApiKey(ApiKey);
             ChatGPTInstance.GetModels();            
             Invoke(updateRichTextListBox2, new Object[] { ChatGPTInstance.Completions });
-
+            if(ChatGPTInstance.Models is not null && ChatGPTInstance.Models.Data is not null) Invoke(updateComboBoxModels, new Object[] { ChatGPTInstance.Models.Data.Select(_ => _.Id).ToArray() });
             this.Enabled = true;
         }
 
@@ -280,6 +295,7 @@ namespace ChatGPT_client
             _chatGPTAPIs.Clear();
             textBoxApiKey.Text = ApiKey;
             Invoke(updateRichTextListBox2, new Object[] { ChatGPTInstance.Completions });
+            if(ChatGPTInstance.Models is not null && ChatGPTInstance.Models.Data is not null) Invoke(updateComboBoxModels, new Object[] { ChatGPTInstance.Models.Data.Select(_ => _.Id).ToArray() });
 
             this.Enabled = true;
         }
@@ -319,12 +335,17 @@ namespace ChatGPT_client
         private void UpdateFormSettings()
         {
             hScrollBarTemperature.Value = (int)(_chatGPTAPIs.Temperature * 100);
+            hScrollBarTopP.Value = (int)(_chatGPTAPIs.Top_p * 100);
             hScrollBarPresencePenalty.Value = (int)(_chatGPTAPIs.Presence_penalty * 100);
             hScrollBarFrequencyPenalty.Value = (int)(_chatGPTAPIs.Frequency_penalty * 100);
 
             textBoxTemperature.Text = _chatGPTAPIs.Temperature.ToString();
+            textBoxTopP.Text = _chatGPTAPIs.Top_p.ToString();
             textBoxPresencePenalty.Text = _chatGPTAPIs.Presence_penalty.ToString();
             textBoxFrequencyPenalty.Text = _chatGPTAPIs.Frequency_penalty.ToString();
+
+            if (!string.IsNullOrWhiteSpace(_chatGPTAPIs.Model))
+                comboBoxModels.SelectedItem = _chatGPTAPIs.Model;
         }
 
         private void hScrollBarTemperature_Scroll(object sender, ScrollEventArgs e)
@@ -345,6 +366,12 @@ namespace ChatGPT_client
             _chatGPTAPIs.Frequency_penalty = ((decimal)e.NewValue / 100);
         }
 
+        private void hScrollBarTopP_Scroll(object sender, ScrollEventArgs e)
+        {
+            textBoxTopP.Text = ((decimal)e.NewValue / 100).ToString();
+            _chatGPTAPIs.Top_p = ((decimal)e.NewValue / 100);
+        }
+
         private void buttonSaveSettings_Click(object sender, EventArgs e)
         {
             SaveSettings();
@@ -356,6 +383,14 @@ namespace ChatGPT_client
             UpdateFormSettings();
         }
         #endregion
+
+        private void comboBoxModels_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //var model = ChatGPTInstance.Models.Data.FirstOrDefault(_ => _.Id == ((System.Windows.Forms.ComboBox)sender).SelectedText);
+            var model = (string)((System.Windows.Forms.ComboBox)sender).SelectedItem;
+            if (!string.IsNullOrWhiteSpace(model))
+                _chatGPTAPIs.Model = model;
+        }
     }
 
     public class MyThreadClass
