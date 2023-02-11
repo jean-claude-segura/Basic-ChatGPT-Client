@@ -43,6 +43,7 @@
             this.configurationPage = new System.Windows.Forms.TabPage();
             this.panelSettings = new System.Windows.Forms.Panel();
             this.panelModel = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.listViewModelPermissions = new System.Windows.Forms.ListView();
             this.textBoxModelParent = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -269,6 +270,7 @@
             // panelModel
             // 
             this.panelModel.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panelModel.Controls.Add(this.textBox1);
             this.panelModel.Controls.Add(this.listViewModelPermissions);
             this.panelModel.Controls.Add(this.textBoxModelParent);
             this.panelModel.Controls.Add(this.label11);
@@ -284,16 +286,25 @@
             this.panelModel.Controls.Add(this.comboBoxModels);
             this.panelModel.Location = new System.Drawing.Point(3, 3);
             this.panelModel.Name = "panelModel";
-            this.panelModel.Size = new System.Drawing.Size(740, 269);
+            this.panelModel.Size = new System.Drawing.Size(740, 240);
             this.panelModel.TabIndex = 19;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(9, 109);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(84, 27);
+            this.textBox1.TabIndex = 56;
+            this.textBox1.Text = "Permissions";
             // 
             // listViewModelPermissions
             // 
             this.listViewModelPermissions.FullRowSelect = true;
             this.listViewModelPermissions.GridLines = true;
-            this.listViewModelPermissions.Location = new System.Drawing.Point(9, 105);
+            this.listViewModelPermissions.Location = new System.Drawing.Point(9, 136);
             this.listViewModelPermissions.Name = "listViewModelPermissions";
-            this.listViewModelPermissions.Size = new System.Drawing.Size(719, 159);
+            this.listViewModelPermissions.Size = new System.Drawing.Size(719, 98);
             this.listViewModelPermissions.TabIndex = 55;
             this.listViewModelPermissions.UseCompatibleStateImageBehavior = false;
             this.listViewModelPermissions.View = System.Windows.Forms.View.Details;
@@ -739,6 +750,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox comboBoxModels;
         private System.Windows.Forms.ListView listViewModelPermissions;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
