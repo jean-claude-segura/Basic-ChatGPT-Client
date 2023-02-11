@@ -108,7 +108,7 @@ namespace ChatGPT_client
      */
     public class Models
     {
-        public string Object { set; get; }
+        public string Object { get; set; }
         public List<Model> Data { get; set; }
     }
 }
