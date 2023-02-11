@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormChatGPT));
             this.rtbChat = new System.Windows.Forms.RichTextBox();
             this.tbSaisie = new System.Windows.Forms.TextBox();
@@ -65,6 +66,7 @@
             this.resetButton = new System.Windows.Forms.Button();
             this.tabPageInformations = new System.Windows.Forms.TabPage();
             this.richTextBoxInformations = new System.Windows.Forms.RichTextBox();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.tabControl.SuspendLayout();
             this.tabConversation.SuspendLayout();
             this.tabConsole.SuspendLayout();
@@ -139,6 +141,7 @@
             this.tabControl.Controls.Add(this.tabConsole);
             this.tabControl.Controls.Add(this.configurationPage);
             this.tabControl.Controls.Add(this.tabPageInformations);
+            this.tabControl.ImageList = this.imageList1;
             this.tabControl.ItemSize = new System.Drawing.Size(98, 25);
             this.tabControl.Location = new System.Drawing.Point(0, 1);
             this.tabControl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -155,6 +158,7 @@
             this.tabConversation.Controls.Add(this.rtbChat);
             this.tabConversation.Controls.Add(this.tbSaisie);
             this.tabConversation.Controls.Add(this.progressBar1);
+            this.tabConversation.ImageIndex = 0;
             this.tabConversation.Location = new System.Drawing.Point(4, 29);
             this.tabConversation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabConversation.Name = "tabConversation";
@@ -167,6 +171,7 @@
             // 
             this.tabConsole.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.tabConsole.Controls.Add(this.rtbConsole);
+            this.tabConsole.ImageIndex = 1;
             this.tabConsole.Location = new System.Drawing.Point(4, 29);
             this.tabConsole.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabConsole.Name = "tabConsole";
@@ -196,6 +201,7 @@
             this.configurationPage.Controls.Add(this.panelSettings);
             this.configurationPage.Controls.Add(this.panelApiKey);
             this.configurationPage.Controls.Add(this.resetButton);
+            this.configurationPage.ImageIndex = 2;
             this.configurationPage.Location = new System.Drawing.Point(4, 29);
             this.configurationPage.Name = "configurationPage";
             this.configurationPage.Padding = new System.Windows.Forms.Padding(3);
@@ -467,6 +473,7 @@
             // 
             this.tabPageInformations.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.tabPageInformations.Controls.Add(this.richTextBoxInformations);
+            this.tabPageInformations.ImageIndex = 3;
             this.tabPageInformations.Location = new System.Drawing.Point(4, 29);
             this.tabPageInformations.Name = "tabPageInformations";
             this.tabPageInformations.Size = new System.Drawing.Size(772, 554);
@@ -486,6 +493,16 @@
             this.richTextBoxInformations.TabIndex = 0;
             this.richTextBoxInformations.Text = resources.GetString("richTextBoxInformations.Text");
             // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "comment-alt (1).png");
+            this.imageList1.Images.SetKeyName(1, "json.png");
+            this.imageList1.Images.SetKeyName(2, "settings.png");
+            this.imageList1.Images.SetKeyName(3, "comment-info.png");
+            // 
             // FormChatGPT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -498,7 +515,7 @@
             this.DoubleBuffered = true;
             this.MinimumSize = new System.Drawing.Size(798, 662);
             this.Name = "FormChatGPT";
-            this.Text = "Chat - J\'ai pété!";
+            this.Text = "Basic ChatGPT Client";
             this.Shown += new System.EventHandler(this.Form1_Shown);
             this.tabControl.ResumeLayout(false);
             this.tabConversation.ResumeLayout(false);
@@ -553,6 +570,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox comboBoxModels;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }
 
