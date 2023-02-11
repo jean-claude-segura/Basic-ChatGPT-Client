@@ -189,7 +189,6 @@
             this.tabConversation.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabConversation.Size = new System.Drawing.Size(772, 554);
             this.tabConversation.TabIndex = 0;
-            this.tabConversation.Text = "Conversation";
             // 
             // tabConsole
             // 
@@ -202,7 +201,6 @@
             this.tabConsole.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabConsole.Size = new System.Drawing.Size(772, 554);
             this.tabConsole.TabIndex = 1;
-            this.tabConsole.Text = "Console";
             // 
             // rtbConsole
             // 
@@ -231,7 +229,6 @@
             this.configurationPage.Padding = new System.Windows.Forms.Padding(3);
             this.configurationPage.Size = new System.Drawing.Size(772, 554);
             this.configurationPage.TabIndex = 2;
-            this.configurationPage.Text = "Configuration";
             // 
             // panelSettings
             // 
@@ -502,7 +499,6 @@
             this.tabPageInformations.Name = "tabPageInformations";
             this.tabPageInformations.Size = new System.Drawing.Size(772, 554);
             this.tabPageInformations.TabIndex = 3;
-            this.tabPageInformations.Text = "Informations";
             // 
             // richTextBoxInformations
             // 
