@@ -42,6 +42,17 @@
             this.rtbConsole = new System.Windows.Forms.RichTextBox();
             this.configurationPage = new System.Windows.Forms.TabPage();
             this.panelSettings = new System.Windows.Forms.Panel();
+            this.panelModel = new System.Windows.Forms.Panel();
+            this.textBoxModelParent = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBoxModelRoot = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBoxModelOwnedBy = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBoxModelCreated = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBoxModelObject = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.comboBoxModels = new System.Windows.Forms.ComboBox();
             this.textBoxTopP = new System.Windows.Forms.TextBox();
@@ -76,6 +87,7 @@
             this.tabConsole.SuspendLayout();
             this.configurationPage.SuspendLayout();
             this.panelSettings.SuspendLayout();
+            this.panelModel.SuspendLayout();
             this.panelApiKey.SuspendLayout();
             this.tabPageInformations.SuspendLayout();
             this.SuspendLayout();
@@ -233,8 +245,7 @@
             // panelSettings
             // 
             this.panelSettings.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panelSettings.Controls.Add(this.label6);
-            this.panelSettings.Controls.Add(this.comboBoxModels);
+            this.panelSettings.Controls.Add(this.panelModel);
             this.panelSettings.Controls.Add(this.textBoxTopP);
             this.panelSettings.Controls.Add(this.hScrollBarTopP);
             this.panelSettings.Controls.Add(this.label5);
@@ -254,27 +265,132 @@
             this.panelSettings.Size = new System.Drawing.Size(754, 448);
             this.panelSettings.TabIndex = 18;
             // 
+            // panelModel
+            // 
+            this.panelModel.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panelModel.Controls.Add(this.textBoxModelParent);
+            this.panelModel.Controls.Add(this.label11);
+            this.panelModel.Controls.Add(this.textBoxModelRoot);
+            this.panelModel.Controls.Add(this.label10);
+            this.panelModel.Controls.Add(this.textBoxModelOwnedBy);
+            this.panelModel.Controls.Add(this.label9);
+            this.panelModel.Controls.Add(this.textBoxModelCreated);
+            this.panelModel.Controls.Add(this.label8);
+            this.panelModel.Controls.Add(this.textBoxModelObject);
+            this.panelModel.Controls.Add(this.label7);
+            this.panelModel.Controls.Add(this.label6);
+            this.panelModel.Controls.Add(this.comboBoxModels);
+            this.panelModel.Location = new System.Drawing.Point(3, 3);
+            this.panelModel.Name = "panelModel";
+            this.panelModel.Size = new System.Drawing.Size(740, 269);
+            this.panelModel.TabIndex = 19;
+            // 
+            // textBoxModelParent
+            // 
+            this.textBoxModelParent.Location = new System.Drawing.Point(484, 75);
+            this.textBoxModelParent.Name = "textBoxModelParent";
+            this.textBoxModelParent.ReadOnly = true;
+            this.textBoxModelParent.Size = new System.Drawing.Size(244, 27);
+            this.textBoxModelParent.TabIndex = 54;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(384, 81);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(50, 20);
+            this.label11.TabIndex = 53;
+            this.label11.Text = "Parent";
+            // 
+            // textBoxModelRoot
+            // 
+            this.textBoxModelRoot.Location = new System.Drawing.Point(484, 42);
+            this.textBoxModelRoot.Name = "textBoxModelRoot";
+            this.textBoxModelRoot.ReadOnly = true;
+            this.textBoxModelRoot.Size = new System.Drawing.Size(244, 27);
+            this.textBoxModelRoot.TabIndex = 52;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(384, 48);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(41, 20);
+            this.label10.TabIndex = 51;
+            this.label10.Text = "Root";
+            // 
+            // textBoxModelOwnedBy
+            // 
+            this.textBoxModelOwnedBy.Location = new System.Drawing.Point(484, 10);
+            this.textBoxModelOwnedBy.Name = "textBoxModelOwnedBy";
+            this.textBoxModelOwnedBy.ReadOnly = true;
+            this.textBoxModelOwnedBy.Size = new System.Drawing.Size(244, 27);
+            this.textBoxModelOwnedBy.TabIndex = 50;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(384, 16);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(78, 20);
+            this.label9.TabIndex = 49;
+            this.label9.Text = "Owned_by";
+            // 
+            // textBoxModelCreated
+            // 
+            this.textBoxModelCreated.Location = new System.Drawing.Point(109, 76);
+            this.textBoxModelCreated.Name = "textBoxModelCreated";
+            this.textBoxModelCreated.ReadOnly = true;
+            this.textBoxModelCreated.Size = new System.Drawing.Size(244, 27);
+            this.textBoxModelCreated.TabIndex = 48;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(9, 82);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(61, 20);
+            this.label8.TabIndex = 47;
+            this.label8.Text = "Created";
+            // 
+            // textBoxModelObject
+            // 
+            this.textBoxModelObject.Location = new System.Drawing.Point(109, 43);
+            this.textBoxModelObject.Name = "textBoxModelObject";
+            this.textBoxModelObject.ReadOnly = true;
+            this.textBoxModelObject.Size = new System.Drawing.Size(244, 27);
+            this.textBoxModelObject.TabIndex = 46;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(9, 49);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(53, 20);
+            this.label7.TabIndex = 45;
+            this.label7.Text = "Object";
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 11);
+            this.label6.Location = new System.Drawing.Point(9, 15);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(58, 20);
-            this.label6.TabIndex = 32;
+            this.label6.TabIndex = 44;
             this.label6.Text = "Models";
             // 
             // comboBoxModels
             // 
             this.comboBoxModels.FormattingEnabled = true;
-            this.comboBoxModels.Location = new System.Drawing.Point(159, 3);
+            this.comboBoxModels.Location = new System.Drawing.Point(109, 7);
             this.comboBoxModels.Name = "comboBoxModels";
             this.comboBoxModels.Size = new System.Drawing.Size(244, 28);
-            this.comboBoxModels.TabIndex = 31;
+            this.comboBoxModels.TabIndex = 43;
             this.comboBoxModels.SelectedIndexChanged += new System.EventHandler(this.comboBoxModels_SelectedIndexChanged);
             // 
             // textBoxTopP
             // 
-            this.textBoxTopP.Location = new System.Drawing.Point(159, 313);
+            this.textBoxTopP.Location = new System.Drawing.Point(139, 313);
             this.textBoxTopP.Name = "textBoxTopP";
             this.textBoxTopP.ReadOnly = true;
             this.textBoxTopP.Size = new System.Drawing.Size(59, 27);
@@ -322,7 +438,7 @@
             // 
             // textBoxFrequencyPenalty
             // 
-            this.textBoxFrequencyPenalty.Location = new System.Drawing.Point(159, 383);
+            this.textBoxFrequencyPenalty.Location = new System.Drawing.Point(139, 383);
             this.textBoxFrequencyPenalty.Name = "textBoxFrequencyPenalty";
             this.textBoxFrequencyPenalty.ReadOnly = true;
             this.textBoxFrequencyPenalty.Size = new System.Drawing.Size(59, 27);
@@ -330,7 +446,7 @@
             // 
             // textBoxPresencePenalty
             // 
-            this.textBoxPresencePenalty.Location = new System.Drawing.Point(159, 348);
+            this.textBoxPresencePenalty.Location = new System.Drawing.Point(139, 348);
             this.textBoxPresencePenalty.Name = "textBoxPresencePenalty";
             this.textBoxPresencePenalty.ReadOnly = true;
             this.textBoxPresencePenalty.Size = new System.Drawing.Size(59, 27);
@@ -338,7 +454,7 @@
             // 
             // textBoxTemperature
             // 
-            this.textBoxTemperature.Location = new System.Drawing.Point(159, 278);
+            this.textBoxTemperature.Location = new System.Drawing.Point(139, 278);
             this.textBoxTemperature.Name = "textBoxTemperature";
             this.textBoxTemperature.ReadOnly = true;
             this.textBoxTemperature.Size = new System.Drawing.Size(59, 27);
@@ -472,7 +588,7 @@
             // 
             // textBoxApiKey
             // 
-            this.textBoxApiKey.Location = new System.Drawing.Point(159, 10);
+            this.textBoxApiKey.Location = new System.Drawing.Point(139, 10);
             this.textBoxApiKey.Name = "textBoxApiKey";
             this.textBoxApiKey.PasswordChar = '*';
             this.textBoxApiKey.Size = new System.Drawing.Size(444, 27);
@@ -546,6 +662,8 @@
             this.configurationPage.ResumeLayout(false);
             this.panelSettings.ResumeLayout(false);
             this.panelSettings.PerformLayout();
+            this.panelModel.ResumeLayout(false);
+            this.panelModel.PerformLayout();
             this.panelApiKey.ResumeLayout(false);
             this.panelApiKey.PerformLayout();
             this.tabPageInformations.ResumeLayout(false);
@@ -590,12 +708,23 @@
         private System.Windows.Forms.TextBox textBoxTopP;
         private System.Windows.Forms.HScrollBar hScrollBarTopP;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBoxModels;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.Panel panelModel;
+        private System.Windows.Forms.TextBox textBoxModelParent;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox textBoxModelRoot;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textBoxModelOwnedBy;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox textBoxModelCreated;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBoxModelObject;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox comboBoxModels;
     }
 }
 
