@@ -99,8 +99,8 @@ namespace ChatGPT_client
         {
             comboBoxModels.Items.Clear();
             comboBoxModels.Items.AddRange(modelsIds);
-            if (!string.IsNullOrWhiteSpace(_chatGPTAPIs.Model))
-                comboBoxModels.SelectedItem = _chatGPTAPIs.Model;
+            if (_chatGPTAPIs.Model is not null)
+                comboBoxModels.SelectedItem = _chatGPTAPIs.Model.Id;
 
         }
 
@@ -115,6 +115,9 @@ namespace ChatGPT_client
             updateComboBoxModels = new UpdateComboBoxModels(UpdateComboBoxModelsMethod);
 
             LoadApiKey();
+            
+            ChatGPTInstance.setApiKey(ApiKey);
+            ChatGPTInstance.GetModels();
 
             LoadSettings();
         }
@@ -123,10 +126,16 @@ namespace ChatGPT_client
         {
             this.Enabled = false;
 
+            var permissionProperties = typeof(Permission).GetProperties();
+            foreach (var permissionProperty in permissionProperties)
+            {
+                listViewModelPermissions.Columns.Add(permissionProperty.Name, -2, HorizontalAlignment.Left);
+            }
+
             _chatGPTAPIs.Clear();
             textBoxApiKey.Text = ApiKey;
-            ChatGPTInstance.setApiKey(ApiKey);
-            ChatGPTInstance.GetModels();
+            /*ChatGPTInstance.setApiKey(ApiKey);
+            ChatGPTInstance.GetModels();*/
             Invoke(updateRichTextListBox2, new Object[] { ChatGPTInstance.Completions });
             if(ChatGPTInstance.Models is not null && ChatGPTInstance.Models.Data is not null) Invoke(updateComboBoxModels, new Object[] { ChatGPTInstance.Models.Data.Select(_ => _.Id).ToArray() });
 
@@ -275,6 +284,9 @@ namespace ChatGPT_client
             Invoke(updateRichTextListBox2, new Object[] { ChatGPTInstance.Completions });
             if(ChatGPTInstance.Models is not null && ChatGPTInstance.Models.Data is not null) Invoke(updateComboBoxModels, new Object[] { ChatGPTInstance.Models.Data.Select(_ => _.Id).ToArray() });
 
+            LoadSettings();
+            UpdateFormSettings();
+
             this.Enabled = true;
         }
 
@@ -290,6 +302,10 @@ namespace ChatGPT_client
             ChatGPTInstance.GetModels();            
             Invoke(updateRichTextListBox2, new Object[] { ChatGPTInstance.Completions });
             if(ChatGPTInstance.Models is not null && ChatGPTInstance.Models.Data is not null) Invoke(updateComboBoxModels, new Object[] { ChatGPTInstance.Models.Data.Select(_ => _.Id).ToArray() });
+
+            LoadSettings();
+            UpdateFormSettings();
+
             this.Enabled = true;
         }
 
@@ -311,7 +327,7 @@ namespace ChatGPT_client
         #region SETTINGS
         private void LoadSettings()
         {
-            _chatGPTAPIs.Model = Properties.Settings.Default.model;
+            _chatGPTAPIs.SetModel(Properties.Settings.Default.model);
             _chatGPTAPIs.Presence_penalty = Properties.Settings.Default.presence_penalty;
             _chatGPTAPIs.Frequency_penalty = Properties.Settings.Default.frequency_penalty;
             _chatGPTAPIs.Temperature = Properties.Settings.Default.temperature;
@@ -326,14 +342,14 @@ namespace ChatGPT_client
 
         private void SaveSettings()
         {
-            Properties.Settings.Default.model = _chatGPTAPIs.Model;
-            Properties.Settings.Default.presence_penalty = _chatGPTAPIs.Presence_penalty;
-            Properties.Settings.Default.frequency_penalty = _chatGPTAPIs.Frequency_penalty;
-            Properties.Settings.Default.temperature = _chatGPTAPIs.Temperature;
+            Properties.Settings.Default.model = _chatGPTAPIs.Model.Id; // Done
+            Properties.Settings.Default.temperature = _chatGPTAPIs.Temperature; // Done
+            Properties.Settings.Default.top_p = _chatGPTAPIs.Top_p; // Done
+            Properties.Settings.Default.presence_penalty = _chatGPTAPIs.Presence_penalty; // Done
+            Properties.Settings.Default.frequency_penalty = _chatGPTAPIs.Frequency_penalty; // Done
             Properties.Settings.Default.best_of = _chatGPTAPIs.Best_of;
             Properties.Settings.Default.max_tokens = _chatGPTAPIs.Max_tokens;
             Properties.Settings.Default.n = _chatGPTAPIs.N;
-            Properties.Settings.Default.top_p = _chatGPTAPIs.Top_p;
             Properties.Settings.Default.echo = _chatGPTAPIs.Echo;
             Properties.Settings.Default.stream = _chatGPTAPIs.Stream;
             Properties.Settings.Default.Save();
@@ -341,6 +357,9 @@ namespace ChatGPT_client
 
         private void UpdateFormSettings()
         {
+            if (_chatGPTAPIs.Model is not null && !string.IsNullOrWhiteSpace(_chatGPTAPIs.Model.Id))
+                comboBoxModels.SelectedItem = _chatGPTAPIs.Model.Id;
+
             hScrollBarTemperature.Value = (int)(_chatGPTAPIs.Temperature * 100);
             hScrollBarTopP.Value = (int)(_chatGPTAPIs.Top_p * 100);
             hScrollBarPresencePenalty.Value = (int)(_chatGPTAPIs.Presence_penalty * 100);
@@ -351,14 +370,11 @@ namespace ChatGPT_client
             textBoxPresencePenalty.Text = _chatGPTAPIs.Presence_penalty.ToString();
             textBoxFrequencyPenalty.Text = _chatGPTAPIs.Frequency_penalty.ToString();
 
-            if (!string.IsNullOrWhiteSpace(_chatGPTAPIs.Model))
-                comboBoxModels.SelectedItem = _chatGPTAPIs.Model;
-
+            toolTip1.SetToolTip(comboBoxModels, "ID of the model to use.");
             toolTip1.SetToolTip(hScrollBarTemperature, "What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.\r\nWe generally recommend altering this or top_p but not both.");
             toolTip1.SetToolTip(hScrollBarTopP, "An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered.\r\nWe generally recommend altering this or temperature but not both.");
             toolTip1.SetToolTip(hScrollBarPresencePenalty, "Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.");
             toolTip1.SetToolTip(hScrollBarFrequencyPenalty, "Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim.");
-            toolTip1.SetToolTip(comboBoxModels, "ID of the model to use.");
             //toolTip1.SetToolTip(hScrollBarFrequencyPenalty, "");
             //toolTip1.SetToolTip(hScrollBarFrequencyPenalty, "");
             //toolTip1.SetToolTip(hScrollBarFrequencyPenalty, "");
@@ -408,10 +424,29 @@ namespace ChatGPT_client
 
         private void comboBoxModels_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //var model = ChatGPTInstance.Models.Data.FirstOrDefault(_ => _.Id == ((System.Windows.Forms.ComboBox)sender).SelectedText);
             var model = (string)((System.Windows.Forms.ComboBox)sender).SelectedItem;
-            if (!string.IsNullOrWhiteSpace(model))
-                _chatGPTAPIs.Model = model;
+            _chatGPTAPIs.SetModel(model);
+
+            listViewModelPermissions.SuspendLayout();
+            listViewModelPermissions.Items.Clear();
+
+            var permissionProperties = typeof(Permission).GetProperties();
+
+            if (_chatGPTAPIs is not null && _chatGPTAPIs.Model is not null)
+            {
+                foreach (var permission in _chatGPTAPIs.Model.Permission)
+                {
+                    ListViewItem listItem = new ListViewItem(permissionProperties.First().GetValue(permission).ToString());
+                    foreach (var permissionProperty in permissionProperties)
+                    {
+                        if (permissionProperty != permissionProperties.First())
+                            listItem.SubItems.Add((permissionProperty.GetValue(permission) ?? "").ToString());
+                    }
+
+                    listViewModelPermissions.Items.Add(listItem);
+                }
+            }
+            listViewModelPermissions.ResumeLayout(false);
         }
 
         private void tabControl_Selected(object sender, TabControlEventArgs e)

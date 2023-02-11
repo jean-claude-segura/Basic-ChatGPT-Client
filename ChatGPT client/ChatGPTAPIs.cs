@@ -23,7 +23,7 @@ namespace ChatGPT_client
         static public List<string> Completions { get => _completions; }
         static private string? _openAIApiKey { get; set; } = null;
         public int Tokens { get; set; }
-        public string Model { get; set; } = "text-davinci-003";
+        public Model? Model { get; private set; } = null;
         public int Max_tokens { get; set; }
         public decimal Temperature { get; set; }
         public decimal Top_p { get; set; }
@@ -38,17 +38,6 @@ namespace ChatGPT_client
         private List<Tuple<string, string>> _conversation { get; set; } = new List<Tuple<string, string>>();
         public List<Tuple<string, string>> Conversation { get => _conversation; }
 
-        public ChatGPTInstance()
-        {
-            /*Tokens = 4000; // 2048; // 4097 max en comptant le prompt.
-            Max_Tokens = Tokens;
-            Model = "text-davinci-003";
-            Temperature = 0; // 0.9;
-            TopP = 1;
-            FrequencyPenalty = 0;
-            PresencePenalty = 0;// 0.6;*/
-        }
-
         static public void setApiKey(string openAIApiKey)
         {
             _openAIApiKey = openAIApiKey;
@@ -56,6 +45,11 @@ namespace ChatGPT_client
 
         static public bool isApiKeyOk() => !string.IsNullOrWhiteSpace(_openAIApiKey);
 
+        public bool SetModel(string model)
+        {
+            Model = string.IsNullOrWhiteSpace(model) ? null : Models?.Data.FirstOrDefault(_ => _.Id == model);
+            return Model is not null;
+        }
 
         static public void GetModels()
         {
@@ -153,7 +147,7 @@ namespace ChatGPT_client
         {
             _conversation.Add(new Tuple<string, string>("HUMAN:", prompt + "AI:"));
 
-            var message = new Message(_conversation.Select(_ => _.Item1 + _.Item2).ToList(), Max_tokens, Temperature, Top_p, Frequency_penalty, Presence_penalty, new() { "HUMAN:" }, Model);
+            var message = new Message(_conversation.Select(_ => _.Item1 + _.Item2).ToList(), Max_tokens, Temperature, Top_p, Frequency_penalty, Presence_penalty, new() { "HUMAN:" }, Model.Id);
 
             var res = GetCompletion(message);
 
@@ -169,7 +163,7 @@ namespace ChatGPT_client
         /// <returns></returns>
         public Completion? GetCompletionSingle(string prompt)
         {
-            var message = new Message(prompt, Max_tokens, Temperature, Top_p, Frequency_penalty, Presence_penalty, null, Model);
+            var message = new Message(prompt, Max_tokens, Temperature, Top_p, Frequency_penalty, Presence_penalty, null, Model.Id);
 
             return GetCompletion(message);
         }
