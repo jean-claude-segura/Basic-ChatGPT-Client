@@ -34,6 +34,8 @@
             this.tbSaisie = new System.Windows.Forms.TextBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabConversation = new System.Windows.Forms.TabPage();
             this.tabConsole = new System.Windows.Forms.TabPage();
@@ -67,6 +69,8 @@
             this.tabPageInformations = new System.Windows.Forms.TabPage();
             this.richTextBoxInformations = new System.Windows.Forms.RichTextBox();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.statusStrip1.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabConversation.SuspendLayout();
             this.tabConsole.SuspendLayout();
@@ -125,12 +129,31 @@
             // 
             this.statusStrip1.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.toolStripProgressBar1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 593);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
             this.statusStrip1.Size = new System.Drawing.Size(780, 22);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(760, 16);
+            this.toolStripStatusLabel1.Spring = true;
+            // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripProgressBar1.MarqueeAnimationSpeed = 1;
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
+            this.toolStripProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.toolStripProgressBar1.Visible = false;
             // 
             // tabControl
             // 
@@ -150,6 +173,7 @@
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(780, 587);
             this.tabControl.TabIndex = 4;
+            this.tabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl_Selected);
             this.tabControl.Click += new System.EventHandler(this.Conversation_Click);
             // 
             // tabConversation
@@ -517,6 +541,8 @@
             this.Name = "FormChatGPT";
             this.Text = "Basic ChatGPT Client";
             this.Shown += new System.EventHandler(this.Form1_Shown);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.tabControl.ResumeLayout(false);
             this.tabConversation.ResumeLayout(false);
             this.tabConversation.PerformLayout();
@@ -571,6 +597,9 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox comboBoxModels;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }
 }
 

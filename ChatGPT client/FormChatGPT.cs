@@ -5,6 +5,7 @@ using System.Buffers.Text;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
@@ -78,6 +79,10 @@ namespace ChatGPT_client
             progressBar1.Style = ProgressBarStyle.Continuous;
             progressBar1.Enabled = false;
             progressBar1.Value = 0;
+            toolStripProgressBar1.Style = ProgressBarStyle.Continuous;
+            toolStripProgressBar1.Enabled = false;
+            toolStripProgressBar1.Value = 0;
+
             tbSaisie.Enabled = true;
             tbSaisie.Focus();
         }
@@ -143,6 +148,7 @@ namespace ChatGPT_client
             if (e.KeyCode == Keys.Enter && !e.Shift)
             {
                 progressBar1.Style = ProgressBarStyle.Marquee;
+                toolStripProgressBar1.Style = ProgressBarStyle.Marquee;
                 tbSaisie.Enabled = false;
 
                 //rtbChat.BackColor = Color.White;
@@ -161,6 +167,7 @@ namespace ChatGPT_client
                 rtbChat.ScrollToCaret();
 
                 progressBar1.Enabled = true;
+                toolStripProgressBar1.Enabled = true;
                 thrChatGPTInstance = new Thread(new ThreadStart(ThreadFunction));
 
                 thrChatGPTInstance.Start();
@@ -390,6 +397,19 @@ namespace ChatGPT_client
             var model = (string)((System.Windows.Forms.ComboBox)sender).SelectedItem;
             if (!string.IsNullOrWhiteSpace(model))
                 _chatGPTAPIs.Model = model;
+        }
+
+        private void tabControl_Selected(object sender, TabControlEventArgs e)
+        {
+            switch (e.TabPageIndex)
+            {
+                case 0:
+                    toolStripProgressBar1.Visible = false;
+                    break;
+                default:
+                    toolStripProgressBar1.Visible=true;
+                    break;
+            }
         }
     }
 
