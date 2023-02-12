@@ -145,13 +145,13 @@ namespace ChatGPT_client
 
         public Completion? GetCompletionHistorized(string prompt)
         {
-            _conversation.Add(new Tuple<string, string>("HUMAN:", prompt + "AI:"));
+            _conversation.Add(new Tuple<string, string>("HUMAN:", prompt));
 
-            var message = new Message(_conversation.Select(_ => _.Item1 + _.Item2).ToList(), Max_tokens, Temperature, Top_p, Frequency_penalty, Presence_penalty, new() { "HUMAN:" }, Model.Id);
+            var message = new Message(_conversation.Select(_ => _.Item1 + _.Item2).ToList().Concat(new List<string>() { "AI:" }).ToList(), Max_tokens, Temperature, Top_p, Frequency_penalty, Presence_penalty, new() { "HUMAN:" }, Model.Id);
 
             var res = GetCompletion(message);
 
-            if(res is not null) _conversation.Add(new Tuple<string, string>("", res.Choices.First().Text + Environment.NewLine));
+            if(res is not null) _conversation.Add(new Tuple<string, string>("AI:", res.Choices.First().Text + Environment.NewLine));
             
             return res;
         }
