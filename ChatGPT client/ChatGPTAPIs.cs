@@ -52,7 +52,7 @@ namespace ChatGPT_client
             return Model is not null;
         }
 
-        static private T? HTTPChatGPTApiGet<T>(string apiCall)
+        static private string? HTTPChatGPTApiGet(string apiCall)
         {
             if (isApiKeyOk())
             {
@@ -66,12 +66,7 @@ namespace ChatGPT_client
 
                             var response = httpClient.SendAsync(request).Result;
 
-                            var json = response.Content.ReadAsStringAsync().Result;
-
-                            // Pour historique :
-                            _completions.Add(JsonConvert.SerializeObject(JsonConvert.DeserializeObject<dynamic>(json), Formatting.Indented));
-
-                            return JsonConvert.DeserializeObject<T?>(json);
+                            return response.Content.ReadAsStringAsync().Result;
                         }
                     }
                 }
@@ -82,11 +77,28 @@ namespace ChatGPT_client
             }
             else
             {
-                return default(T?);
+                return null;
             }
         }
 
-        static private T? HTTPChatGPTApiPost<T>(string apiCall, Message message)
+        static private T? HTTPChatGPTApiGetMessage<T>(string apiCall)
+        {
+            try
+            {
+                var json = HTTPChatGPTApiGet(apiCall);
+
+                // Pour historique :
+                _completions.Add(JsonConvert.SerializeObject(JsonConvert.DeserializeObject<dynamic>(json), Formatting.Indented));
+
+                return JsonConvert.DeserializeObject<T?>(json);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        static private string? HTTPChatGPTApiPost(string apiCall, string jsonRequest)
         {
             if (isApiKeyOk())
             {
@@ -97,25 +109,10 @@ namespace ChatGPT_client
                         using (var request = new HttpRequestMessage(new HttpMethod("POST"), apiCall))
                         {
                             request.Headers.TryAddWithoutValidation("Authorization", "Bearer " + _openAIApiKey);
-                            var jsonRequest = JsonConvert.SerializeObject(
-                                message,
-                                Formatting.Indented,
-                                new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() }
-                                );
-
-
-                            // Pour historique ;
-                            _completions.Add(JsonConvert.SerializeObject(JsonConvert.DeserializeObject(jsonRequest), Formatting.Indented));
-
                             request.Content = new StringContent(jsonRequest);
                             request.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
                             var response = httpClient.SendAsync(request).Result;
-                            var json = response.Content.ReadAsStringAsync().Result;
-
-                            // Pour historique :
-                            _completions.Add(JsonConvert.SerializeObject(JsonConvert.DeserializeObject<dynamic>(json), Formatting.Indented));
-
-                            return JsonConvert.DeserializeObject<T?>(json);
+                            return response.Content.ReadAsStringAsync().Result;
                         }
                     }
                 }
@@ -126,7 +123,33 @@ namespace ChatGPT_client
             }
             else
             {
-                return default(T?);
+                return null;
+            }
+        }
+
+        static private T? HTTPChatGPTApiPostMessage<T>(string apiCall, Message message)
+        {
+            try
+            {
+                var jsonRequest = JsonConvert.SerializeObject(
+                    message,
+                    Formatting.Indented,
+                    new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() }
+                    );
+
+                // Pour historique ;
+                _completions.Add(JsonConvert.SerializeObject(JsonConvert.DeserializeObject(jsonRequest), Formatting.Indented));
+
+                var json = HTTPChatGPTApiPost(apiCall, jsonRequest);
+
+                // Pour historique :
+                _completions.Add(JsonConvert.SerializeObject(JsonConvert.DeserializeObject<dynamic>(json), Formatting.Indented));
+
+                return JsonConvert.DeserializeObject<T?>(json);
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
 
@@ -135,7 +158,7 @@ namespace ChatGPT_client
             var apiCall = "https://api.openai.com/v1/models";
             try
             {
-                _Models = HTTPChatGPTApiGet<Models>(apiCall);
+                _Models = HTTPChatGPTApiGetMessage<Models>(apiCall);
             }
             catch (Exception ex)
             {
@@ -148,7 +171,7 @@ namespace ChatGPT_client
             var apiCall = "https://api.openai.com/v1/completions";
             try
             {
-                Completion? completion = HTTPChatGPTApiPost<Completion>(apiCall, message);
+                Completion? completion = HTTPChatGPTApiPostMessage<Completion>(apiCall, message);
                 if (completion is not null && completion.Error is not null)
                 {
                     switch (completion.Error.Type)

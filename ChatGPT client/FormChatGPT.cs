@@ -86,6 +86,11 @@ namespace ChatGPT_client
 
             tbSaisie.Enabled = true;
             tbSaisie.Focus();
+            foreach (Control control in tabConfiguration.Controls)
+            {
+                control.Enabled = true;
+            }
+
         }
 
         public void UpdateRichTextListBox2Method(List<string> responses)
@@ -176,6 +181,10 @@ namespace ChatGPT_client
 
                 progressBar1.Enabled = true;
                 toolStripProgressBar1.Enabled = true;
+                foreach(Control control in tabConfiguration.Controls)
+                {
+                    control.Enabled = false;
+                }
                 thrChatGPTInstance = new Thread(new ThreadStart(ThreadFunction));
 
                 thrChatGPTInstance.Start();

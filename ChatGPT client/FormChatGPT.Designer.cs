@@ -41,7 +41,7 @@
             this.resetButton = new System.Windows.Forms.Button();
             this.tabConsole = new System.Windows.Forms.TabPage();
             this.rtbConsole = new System.Windows.Forms.RichTextBox();
-            this.configurationPage = new System.Windows.Forms.TabPage();
+            this.tabConfiguration = new System.Windows.Forms.TabPage();
             this.panelSettings = new System.Windows.Forms.Panel();
             this.panelModel = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -87,7 +87,7 @@
             this.tabControl.SuspendLayout();
             this.tabConversation.SuspendLayout();
             this.tabConsole.SuspendLayout();
-            this.configurationPage.SuspendLayout();
+            this.tabConfiguration.SuspendLayout();
             this.panelSettings.SuspendLayout();
             this.panelModel.SuspendLayout();
             this.panelApiKey.SuspendLayout();
@@ -177,7 +177,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl.Controls.Add(this.tabConversation);
             this.tabControl.Controls.Add(this.tabConsole);
-            this.tabControl.Controls.Add(this.configurationPage);
+            this.tabControl.Controls.Add(this.tabConfiguration);
             this.tabControl.Controls.Add(this.tabPageInformations);
             this.tabControl.ImageList = this.imageList1;
             this.tabControl.ItemSize = new System.Drawing.Size(98, 25);
@@ -245,17 +245,17 @@
             this.rtbConsole.TabIndex = 0;
             this.rtbConsole.Text = "";
             // 
-            // configurationPage
+            // tabConfiguration
             // 
-            this.configurationPage.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.configurationPage.Controls.Add(this.panelSettings);
-            this.configurationPage.Controls.Add(this.panelApiKey);
-            this.configurationPage.ImageIndex = 2;
-            this.configurationPage.Location = new System.Drawing.Point(4, 29);
-            this.configurationPage.Name = "configurationPage";
-            this.configurationPage.Padding = new System.Windows.Forms.Padding(3);
-            this.configurationPage.Size = new System.Drawing.Size(772, 554);
-            this.configurationPage.TabIndex = 2;
+            this.tabConfiguration.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.tabConfiguration.Controls.Add(this.panelSettings);
+            this.tabConfiguration.Controls.Add(this.panelApiKey);
+            this.tabConfiguration.ImageIndex = 2;
+            this.tabConfiguration.Location = new System.Drawing.Point(4, 29);
+            this.tabConfiguration.Name = "tabConfiguration";
+            this.tabConfiguration.Padding = new System.Windows.Forms.Padding(3);
+            this.tabConfiguration.Size = new System.Drawing.Size(772, 554);
+            this.tabConfiguration.TabIndex = 2;
             // 
             // panelSettings
             // 
@@ -685,7 +685,7 @@
             this.tabConversation.ResumeLayout(false);
             this.tabConversation.PerformLayout();
             this.tabConsole.ResumeLayout(false);
-            this.configurationPage.ResumeLayout(false);
+            this.tabConfiguration.ResumeLayout(false);
             this.panelSettings.ResumeLayout(false);
             this.panelSettings.PerformLayout();
             this.panelModel.ResumeLayout(false);
@@ -708,7 +708,7 @@
         private System.Windows.Forms.TabPage tabConversation;
         private System.Windows.Forms.TabPage tabConsole;
         private System.Windows.Forms.RichTextBox rtbConsole;
-        private System.Windows.Forms.TabPage configurationPage;
+        private System.Windows.Forms.TabPage tabConfiguration;
         private System.Windows.Forms.TabPage tabPageInformations;
         private System.Windows.Forms.RichTextBox richTextBoxInformations;
         private System.Windows.Forms.Panel panelSettings;
