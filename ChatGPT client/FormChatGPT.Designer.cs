@@ -277,7 +277,7 @@
             this.panelSettings.Controls.Add(this.label2);
             this.panelSettings.Location = new System.Drawing.Point(8, 65);
             this.panelSettings.Name = "panelSettings";
-            this.panelSettings.Size = new System.Drawing.Size(754, 448);
+            this.panelSettings.Size = new System.Drawing.Size(754, 486);
             this.panelSettings.TabIndex = 18;
             // 
             // panelModel
@@ -315,7 +315,7 @@
             // 
             this.listViewModelPermissions.FullRowSelect = true;
             this.listViewModelPermissions.GridLines = true;
-            this.listViewModelPermissions.Location = new System.Drawing.Point(9, 136);
+            this.listViewModelPermissions.Location = new System.Drawing.Point(9, 135);
             this.listViewModelPermissions.Name = "listViewModelPermissions";
             this.listViewModelPermissions.Size = new System.Drawing.Size(719, 98);
             this.listViewModelPermissions.TabIndex = 55;
@@ -427,7 +427,7 @@
             // 
             // textBoxTopP
             // 
-            this.textBoxTopP.Location = new System.Drawing.Point(139, 313);
+            this.textBoxTopP.Location = new System.Drawing.Point(139, 351);
             this.textBoxTopP.Name = "textBoxTopP";
             this.textBoxTopP.ReadOnly = true;
             this.textBoxTopP.Size = new System.Drawing.Size(59, 27);
@@ -436,7 +436,7 @@
             // hScrollBarTopP
             // 
             this.hScrollBarTopP.LargeChange = 1;
-            this.hScrollBarTopP.Location = new System.Drawing.Point(241, 313);
+            this.hScrollBarTopP.Location = new System.Drawing.Point(241, 351);
             this.hScrollBarTopP.Name = "hScrollBarTopP";
             this.hScrollBarTopP.Size = new System.Drawing.Size(502, 26);
             this.hScrollBarTopP.TabIndex = 29;
@@ -445,7 +445,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 319);
+            this.label5.Location = new System.Drawing.Point(3, 357);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(49, 20);
             this.label5.TabIndex = 28;
@@ -455,7 +455,7 @@
             // 
             this.buttonLoadSettings.BackgroundImage = global::ChatGPT_client.Properties.Resources.refresh;
             this.buttonLoadSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonLoadSettings.Location = new System.Drawing.Point(679, 412);
+            this.buttonLoadSettings.Location = new System.Drawing.Point(679, 450);
             this.buttonLoadSettings.Name = "buttonLoadSettings";
             this.buttonLoadSettings.Size = new System.Drawing.Size(29, 29);
             this.buttonLoadSettings.TabIndex = 27;
@@ -466,7 +466,7 @@
             // 
             this.buttonSaveSettings.BackgroundImage = global::ChatGPT_client.Properties.Resources.disk;
             this.buttonSaveSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonSaveSettings.Location = new System.Drawing.Point(714, 412);
+            this.buttonSaveSettings.Location = new System.Drawing.Point(714, 450);
             this.buttonSaveSettings.Name = "buttonSaveSettings";
             this.buttonSaveSettings.Size = new System.Drawing.Size(29, 29);
             this.buttonSaveSettings.TabIndex = 26;
@@ -475,7 +475,7 @@
             // 
             // textBoxFrequencyPenalty
             // 
-            this.textBoxFrequencyPenalty.Location = new System.Drawing.Point(139, 383);
+            this.textBoxFrequencyPenalty.Location = new System.Drawing.Point(139, 421);
             this.textBoxFrequencyPenalty.Name = "textBoxFrequencyPenalty";
             this.textBoxFrequencyPenalty.ReadOnly = true;
             this.textBoxFrequencyPenalty.Size = new System.Drawing.Size(59, 27);
@@ -483,7 +483,7 @@
             // 
             // textBoxPresencePenalty
             // 
-            this.textBoxPresencePenalty.Location = new System.Drawing.Point(139, 348);
+            this.textBoxPresencePenalty.Location = new System.Drawing.Point(139, 386);
             this.textBoxPresencePenalty.Name = "textBoxPresencePenalty";
             this.textBoxPresencePenalty.ReadOnly = true;
             this.textBoxPresencePenalty.Size = new System.Drawing.Size(59, 27);
@@ -491,7 +491,7 @@
             // 
             // textBoxTemperature
             // 
-            this.textBoxTemperature.Location = new System.Drawing.Point(139, 278);
+            this.textBoxTemperature.Location = new System.Drawing.Point(139, 316);
             this.textBoxTemperature.Name = "textBoxTemperature";
             this.textBoxTemperature.ReadOnly = true;
             this.textBoxTemperature.Size = new System.Drawing.Size(59, 27);
@@ -500,7 +500,7 @@
             // hScrollBarFrequencyPenalty
             // 
             this.hScrollBarFrequencyPenalty.LargeChange = 1;
-            this.hScrollBarFrequencyPenalty.Location = new System.Drawing.Point(241, 383);
+            this.hScrollBarFrequencyPenalty.Location = new System.Drawing.Point(241, 421);
             this.hScrollBarFrequencyPenalty.Maximum = 200;
             this.hScrollBarFrequencyPenalty.Minimum = -200;
             this.hScrollBarFrequencyPenalty.Name = "hScrollBarFrequencyPenalty";
@@ -511,7 +511,7 @@
             // hScrollBarPresencePenalty
             // 
             this.hScrollBarPresencePenalty.LargeChange = 1;
-            this.hScrollBarPresencePenalty.Location = new System.Drawing.Point(241, 348);
+            this.hScrollBarPresencePenalty.Location = new System.Drawing.Point(241, 386);
             this.hScrollBarPresencePenalty.Maximum = 200;
             this.hScrollBarPresencePenalty.Minimum = -200;
             this.hScrollBarPresencePenalty.Name = "hScrollBarPresencePenalty";
@@ -522,7 +522,7 @@
             // hScrollBarTemperature
             // 
             this.hScrollBarTemperature.LargeChange = 1;
-            this.hScrollBarTemperature.Location = new System.Drawing.Point(241, 278);
+            this.hScrollBarTemperature.Location = new System.Drawing.Point(241, 316);
             this.hScrollBarTemperature.Maximum = 99;
             this.hScrollBarTemperature.Name = "hScrollBarTemperature";
             this.hScrollBarTemperature.Size = new System.Drawing.Size(502, 26);
@@ -532,7 +532,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 389);
+            this.label4.Location = new System.Drawing.Point(3, 427);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(131, 20);
             this.label4.TabIndex = 19;
@@ -541,7 +541,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 354);
+            this.label3.Location = new System.Drawing.Point(3, 392);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(122, 20);
             this.label3.TabIndex = 18;
@@ -550,7 +550,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 284);
+            this.label2.Location = new System.Drawing.Point(3, 322);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(93, 20);
             this.label2.TabIndex = 17;

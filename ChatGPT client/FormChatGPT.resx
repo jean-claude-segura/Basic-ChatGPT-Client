@@ -60,6 +60,26 @@
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="richTextBoxInformations.Text" xml:space="preserve">
+    <value>https://www.flaticon.com/free-icon-font/comment-alt_3916599
+https://www.flaticon.com/free-icon-font/disk_3917263
+https://www.flaticon.com/free-icon-font/refresh_3917293
+https://www.flaticon.com/free-icon-font/eye_3917112
+https://www.flaticon.com/free-icon-font/eye-crossed_3917126
+https://stackoverflow.com/a/8430261
+&lt;a href="https://www.flaticon.com/free-icons/development" title="development icons"&gt;Development icons created by Lizel Arina - Flaticon&lt;/a&gt;
+https://www.flaticon.com/free-icon/json_8278296
+https://www.flaticon.com/free-icon-font/comment-alt_3916622
+https://www.flaticon.com/free-icon-font/comment-user_5074623
+https://www.flaticon.com/free-icon-font/settings_3917035
+https://www.flaticon.com/free-icon-font/comment-info_5074643
+https://www.flaticon.com/free-icon/reset-password_6119819
+&lt;a href="https://www.flaticon.com/free-icons/reset-password" title="reset password icons"&gt;Reset password icons created by Freepik - Flaticon&lt;/a&gt;
+https://stackoverflow.com/a/66066710
+https://platform.openai.com/docs/api-reference/introduction
+https://platform.openai.com/docs/models/overview
+</value>
+  </data>
   <metadata name="imageList1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>154, 17</value>
   </metadata>
@@ -68,7 +88,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAEZTeXN0ZW0uV2luZG93cy5Gb3JtcywgQ3VsdHVyZT1uZXV0cmFs
         LCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQEAAAAmU3lzdGVtLldpbmRvd3MuRm9ybXMu
         SW1hZ2VMaXN0U3RyZWFtZXIBAAAABERhdGEHAgIAAAAJAwAAAA8DAAAAmAsAAAJNU0Z0AUkBTAIBAQQB
-        AAFYAQEBWAEBARABAAEQAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMAAUADAAEgAwABAQEAAQgG
+        AAFoAQEBaAEBARABAAEQAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMAAUADAAEgAwABAQEAAQgG
         AAEIGAABgAIAAYADAAKAAQABgAMAAYABAAGAAQACgAIAA8ABAAHAAdwBwAEAAfABygGmAQABMwUAATMB
         AAEzAQABMwEAAjMCAAMWAQADHAEAAyIBAAMpAQADVQEAA00BAANCAQADOQEAAYABfAH/AQACUAH/AQAB
         kwEAAdYBAAH/AewBzAEAAcYB1gHvAQAB1gLnAQABkAGpAa0CAAH/ATMDAAFmAwABmQMAAcwCAAEzAwAC
@@ -118,26 +138,6 @@
         CAEQAT8BPAEwAQwBxwHjAcgBEwE/ATwBMAEMAccB4wHIARMCPAEwAQwC5wEIARABPAF8AT8B/ALnAQQB
         IAEeAXgBMAH8AucBAwHAAR4BeAEwAfwB4QGHAYABAQGOAXEBPwH8AeEBhwGAAQEBgwHBAgAC/wH8AT8B
         wAEDAgAC/wH8AT8B8AEPCw==
-</value>
-  </data>
-  <data name="richTextBoxInformations.Text" xml:space="preserve">
-    <value>https://www.flaticon.com/free-icon-font/comment-alt_3916599
-https://www.flaticon.com/free-icon-font/disk_3917263
-https://www.flaticon.com/free-icon-font/refresh_3917293
-https://www.flaticon.com/free-icon-font/eye_3917112
-https://www.flaticon.com/free-icon-font/eye-crossed_3917126
-https://stackoverflow.com/a/8430261
-&lt;a href="https://www.flaticon.com/free-icons/development" title="development icons"&gt;Development icons created by Lizel Arina - Flaticon&lt;/a&gt;
-https://www.flaticon.com/free-icon/json_8278296
-https://www.flaticon.com/free-icon-font/comment-alt_3916622
-https://www.flaticon.com/free-icon-font/comment-user_5074623
-https://www.flaticon.com/free-icon-font/settings_3917035
-https://www.flaticon.com/free-icon-font/comment-info_5074643
-https://www.flaticon.com/free-icon/reset-password_6119819
-&lt;a href="https://www.flaticon.com/free-icons/reset-password" title="reset password icons"&gt;Reset password icons created by Freepik - Flaticon&lt;/a&gt;
-https://stackoverflow.com/a/66066710
-https://platform.openai.com/docs/api-reference/introduction
-https://platform.openai.com/docs/models/overview
 </value>
   </data>
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
