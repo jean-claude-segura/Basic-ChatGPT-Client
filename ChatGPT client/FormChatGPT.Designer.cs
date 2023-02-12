@@ -38,6 +38,7 @@
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabConversation = new System.Windows.Forms.TabPage();
+            this.resetButton = new System.Windows.Forms.Button();
             this.tabConsole = new System.Windows.Forms.TabPage();
             this.rtbConsole = new System.Windows.Forms.RichTextBox();
             this.configurationPage = new System.Windows.Forms.TabPage();
@@ -78,7 +79,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonSaveApiKey = new System.Windows.Forms.Button();
             this.textBoxApiKey = new System.Windows.Forms.TextBox();
-            this.resetButton = new System.Windows.Forms.Button();
             this.tabPageInformations = new System.Windows.Forms.TabPage();
             this.richTextBoxInformations = new System.Windows.Forms.RichTextBox();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
@@ -136,7 +136,7 @@
             this.progressBar1.MarqueeAnimationSpeed = 1;
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.progressBar1.Size = new System.Drawing.Size(757, 29);
+            this.progressBar1.Size = new System.Drawing.Size(722, 29);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar1.TabIndex = 2;
             // 
@@ -194,6 +194,7 @@
             // tabConversation
             // 
             this.tabConversation.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.tabConversation.Controls.Add(this.resetButton);
             this.tabConversation.Controls.Add(this.rtbChat);
             this.tabConversation.Controls.Add(this.tbSaisie);
             this.tabConversation.Controls.Add(this.progressBar1);
@@ -204,6 +205,18 @@
             this.tabConversation.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabConversation.Size = new System.Drawing.Size(772, 554);
             this.tabConversation.TabIndex = 0;
+            // 
+            // resetButton
+            // 
+            this.resetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.resetButton.BackgroundImage = global::ChatGPT_client.Properties.Resources.reset_password;
+            this.resetButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.resetButton.Location = new System.Drawing.Point(735, 517);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(29, 29);
+            this.resetButton.TabIndex = 3;
+            this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
             // tabConsole
             // 
@@ -237,7 +250,6 @@
             this.configurationPage.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.configurationPage.Controls.Add(this.panelSettings);
             this.configurationPage.Controls.Add(this.panelApiKey);
-            this.configurationPage.Controls.Add(this.resetButton);
             this.configurationPage.ImageIndex = 2;
             this.configurationPage.Location = new System.Drawing.Point(4, 29);
             this.configurationPage.Name = "configurationPage";
@@ -619,18 +631,6 @@
             this.textBoxApiKey.Size = new System.Drawing.Size(444, 27);
             this.textBoxApiKey.TabIndex = 15;
             // 
-            // resetButton
-            // 
-            this.resetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.resetButton.BackgroundImage = global::ChatGPT_client.Properties.Resources.reset_password;
-            this.resetButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.resetButton.Location = new System.Drawing.Point(733, 519);
-            this.resetButton.Name = "resetButton";
-            this.resetButton.Size = new System.Drawing.Size(29, 29);
-            this.resetButton.TabIndex = 0;
-            this.resetButton.UseVisualStyleBackColor = true;
-            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
-            // 
             // tabPageInformations
             // 
             this.tabPageInformations.BackColor = System.Drawing.SystemColors.WindowFrame;
@@ -709,7 +709,6 @@
         private System.Windows.Forms.TabPage tabConsole;
         private System.Windows.Forms.RichTextBox rtbConsole;
         private System.Windows.Forms.TabPage configurationPage;
-        private System.Windows.Forms.Button resetButton;
         private System.Windows.Forms.TabPage tabPageInformations;
         private System.Windows.Forms.RichTextBox richTextBoxInformations;
         private System.Windows.Forms.Panel panelSettings;
@@ -753,6 +752,7 @@
         private System.Windows.Forms.ComboBox comboBoxModels;
         private System.Windows.Forms.ListView listViewModelPermissions;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button resetButton;
     }
 }
 
