@@ -272,6 +272,8 @@
             // 
             // panelSettings
             // 
+            this.panelSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.panelSettings.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panelSettings.Controls.Add(this.textBoxSuffix);
             this.panelSettings.Controls.Add(this.label15);
@@ -306,6 +308,7 @@
             // 
             // textBoxSuffix
             // 
+            this.textBoxSuffix.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.textBoxSuffix.Location = new System.Drawing.Point(139, 281);
             this.textBoxSuffix.Name = "textBoxSuffix";
             this.textBoxSuffix.Size = new System.Drawing.Size(604, 27);
@@ -314,6 +317,7 @@
             // 
             // label15
             // 
+            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(3, 284);
             this.label15.Name = "label15";
@@ -323,6 +327,7 @@
             // 
             // label14
             // 
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(579, 250);
             this.label14.Name = "label14";
@@ -332,6 +337,7 @@
             // 
             // label13
             // 
+            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(361, 250);
             this.label13.Name = "label13";
@@ -341,6 +347,7 @@
             // 
             // numericUpDownBestOf
             // 
+            this.numericUpDownBestOf.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.numericUpDownBestOf.Location = new System.Drawing.Point(642, 248);
             this.numericUpDownBestOf.Name = "numericUpDownBestOf";
             this.numericUpDownBestOf.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -350,6 +357,7 @@
             // 
             // numericUpDownN
             // 
+            this.numericUpDownN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.numericUpDownN.Location = new System.Drawing.Point(387, 248);
             this.numericUpDownN.Name = "numericUpDownN";
             this.numericUpDownN.Size = new System.Drawing.Size(101, 27);
@@ -358,6 +366,7 @@
             // 
             // textBoxMaxTokens
             // 
+            this.textBoxMaxTokens.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.textBoxMaxTokens.Location = new System.Drawing.Point(139, 315);
             this.textBoxMaxTokens.Name = "textBoxMaxTokens";
             this.textBoxMaxTokens.ReadOnly = true;
@@ -366,6 +375,7 @@
             // 
             // hScrollBarMaxTokens
             // 
+            this.hScrollBarMaxTokens.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.hScrollBarMaxTokens.LargeChange = 1;
             this.hScrollBarMaxTokens.Location = new System.Drawing.Point(241, 315);
             this.hScrollBarMaxTokens.Maximum = 4000;
@@ -375,6 +385,7 @@
             // 
             // label12
             // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(3, 321);
             this.label12.Name = "label12";
@@ -384,6 +395,7 @@
             // 
             // checkBoxEcho
             // 
+            this.checkBoxEcho.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBoxEcho.AutoSize = true;
             this.checkBoxEcho.Location = new System.Drawing.Point(139, 249);
             this.checkBoxEcho.Name = "checkBoxEcho";
@@ -395,6 +407,7 @@
             // 
             // checkBoxStream
             // 
+            this.checkBoxStream.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBoxStream.AutoSize = true;
             this.checkBoxStream.Enabled = false;
             this.checkBoxStream.Location = new System.Drawing.Point(3, 249);
@@ -552,6 +565,7 @@
             // 
             // textBoxTopP
             // 
+            this.textBoxTopP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.textBoxTopP.Location = new System.Drawing.Point(139, 385);
             this.textBoxTopP.Name = "textBoxTopP";
             this.textBoxTopP.ReadOnly = true;
@@ -560,6 +574,7 @@
             // 
             // hScrollBarTopP
             // 
+            this.hScrollBarTopP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.hScrollBarTopP.LargeChange = 1;
             this.hScrollBarTopP.Location = new System.Drawing.Point(241, 385);
             this.hScrollBarTopP.Name = "hScrollBarTopP";
@@ -569,6 +584,7 @@
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(3, 391);
             this.label5.Name = "label5";
@@ -578,6 +594,7 @@
             // 
             // buttonLoadSettings
             // 
+            this.buttonLoadSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonLoadSettings.BackgroundImage = global::ChatGPT_client.Properties.Resources.refresh;
             this.buttonLoadSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonLoadSettings.Location = new System.Drawing.Point(679, 484);
@@ -589,6 +606,7 @@
             // 
             // buttonSaveSettings
             // 
+            this.buttonSaveSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonSaveSettings.BackgroundImage = global::ChatGPT_client.Properties.Resources.disk;
             this.buttonSaveSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonSaveSettings.Location = new System.Drawing.Point(714, 484);
@@ -600,6 +618,7 @@
             // 
             // textBoxFrequencyPenalty
             // 
+            this.textBoxFrequencyPenalty.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.textBoxFrequencyPenalty.Location = new System.Drawing.Point(139, 455);
             this.textBoxFrequencyPenalty.Name = "textBoxFrequencyPenalty";
             this.textBoxFrequencyPenalty.ReadOnly = true;
@@ -608,6 +627,7 @@
             // 
             // textBoxPresencePenalty
             // 
+            this.textBoxPresencePenalty.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.textBoxPresencePenalty.Location = new System.Drawing.Point(139, 420);
             this.textBoxPresencePenalty.Name = "textBoxPresencePenalty";
             this.textBoxPresencePenalty.ReadOnly = true;
@@ -616,6 +636,7 @@
             // 
             // textBoxTemperature
             // 
+            this.textBoxTemperature.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.textBoxTemperature.Location = new System.Drawing.Point(139, 350);
             this.textBoxTemperature.Name = "textBoxTemperature";
             this.textBoxTemperature.ReadOnly = true;
@@ -624,6 +645,7 @@
             // 
             // hScrollBarFrequencyPenalty
             // 
+            this.hScrollBarFrequencyPenalty.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.hScrollBarFrequencyPenalty.LargeChange = 1;
             this.hScrollBarFrequencyPenalty.Location = new System.Drawing.Point(241, 455);
             this.hScrollBarFrequencyPenalty.Maximum = 200;
@@ -635,6 +657,7 @@
             // 
             // hScrollBarPresencePenalty
             // 
+            this.hScrollBarPresencePenalty.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.hScrollBarPresencePenalty.LargeChange = 1;
             this.hScrollBarPresencePenalty.Location = new System.Drawing.Point(241, 420);
             this.hScrollBarPresencePenalty.Maximum = 200;
@@ -646,6 +669,7 @@
             // 
             // hScrollBarTemperature
             // 
+            this.hScrollBarTemperature.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.hScrollBarTemperature.LargeChange = 1;
             this.hScrollBarTemperature.Location = new System.Drawing.Point(241, 350);
             this.hScrollBarTemperature.Maximum = 99;
@@ -656,6 +680,7 @@
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(3, 461);
             this.label4.Name = "label4";
@@ -665,6 +690,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(3, 426);
             this.label3.Name = "label3";
@@ -674,6 +700,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(3, 356);
             this.label2.Name = "label2";
