@@ -346,6 +346,7 @@ namespace ChatGPT_client
             _chatGPTAPIs.Top_p = Properties.Settings.Default.top_p;
             _chatGPTAPIs.Echo = Properties.Settings.Default.echo;
             _chatGPTAPIs.Stream = Properties.Settings.Default.stream;
+            _chatGPTAPIs.Suffix = string.IsNullOrWhiteSpace(Properties.Settings.Default.suffix) ? null : Properties.Settings.Default.suffix;
         }
 
         private void SaveSettings()
@@ -360,6 +361,7 @@ namespace ChatGPT_client
             Properties.Settings.Default.n = _chatGPTAPIs.N;
             Properties.Settings.Default.echo = _chatGPTAPIs.Echo;
             Properties.Settings.Default.stream = _chatGPTAPIs.Stream;
+            Properties.Settings.Default.suffix = string.IsNullOrWhiteSpace(_chatGPTAPIs.Suffix)? null : _chatGPTAPIs.Suffix;
             Properties.Settings.Default.Save();
         }
 
@@ -373,26 +375,29 @@ namespace ChatGPT_client
             hScrollBarPresencePenalty.Value = (int)(_chatGPTAPIs.Presence_penalty * 100);
             hScrollBarFrequencyPenalty.Value = (int)(_chatGPTAPIs.Frequency_penalty * 100);
 
-
             textBoxTemperature.Text = _chatGPTAPIs.Temperature.ToString();
             textBoxTopP.Text = _chatGPTAPIs.Top_p.ToString();
             textBoxPresencePenalty.Text = _chatGPTAPIs.Presence_penalty.ToString();
             textBoxFrequencyPenalty.Text = _chatGPTAPIs.Frequency_penalty.ToString();
+
+            textBoxSuffix.Text = _chatGPTAPIs.Suffix;
+
+            checkBoxStream.Checked = _chatGPTAPIs.Stream;
+            checkBoxEcho.Checked = _chatGPTAPIs.Echo;
+            numericUpDownN.Value= _chatGPTAPIs.N;
+            numericUpDownBestOf.Value = _chatGPTAPIs.Best_of;
 
             toolTip1.SetToolTip(comboBoxModels, "ID of the model to use.");
             toolTip1.SetToolTip(hScrollBarTemperature, "What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.\r\nWe generally recommend altering this or top_p but not both.");
             toolTip1.SetToolTip(hScrollBarTopP, "An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered.\r\nWe generally recommend altering this or temperature but not both.");
             toolTip1.SetToolTip(hScrollBarPresencePenalty, "Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.");
             toolTip1.SetToolTip(hScrollBarFrequencyPenalty, "Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim.");
-            //toolTip1.SetToolTip(hScrollBarFrequencyPenalty, "");
-            //toolTip1.SetToolTip(hScrollBarFrequencyPenalty, "");
-            //toolTip1.SetToolTip(hScrollBarFrequencyPenalty, "");
-            //toolTip1.SetToolTip(hScrollBarFrequencyPenalty, "");
-            //toolTip1.SetToolTip(hScrollBarFrequencyPenalty, "");
-            //toolTip1.SetToolTip(hScrollBarFrequencyPenalty, "");
-            //toolTip1.SetToolTip(hScrollBarFrequencyPenalty, "");
-            //toolTip1.SetToolTip(hScrollBarFrequencyPenalty, "");
-            //toolTip1.SetToolTip(hScrollBarFrequencyPenalty, "");
+
+            toolTip1.SetToolTip(checkBoxStream, "Whether to stream back partial progress. If set, tokens will be sent as data-only server-sent events as they become available, with the stream terminated by a data: [DONE] message.");
+            toolTip1.SetToolTip(checkBoxEcho, "Echo back the prompt in addition to the completion.");
+            toolTip1.SetToolTip(numericUpDownN, "How many completions to generate for each prompt.\r\n\r\nNote: Because this parameter generates many completions, it can quickly consume your token quota. Use carefully and ensure that you have reasonable settings for max_tokens and stop.");
+            toolTip1.SetToolTip(numericUpDownBestOf, "Generates best_of completions server-side and returns the \"best\" (the one with the highest log probability per token). Results cannot be streamed.\r\n\r\nWhen used with n, best_of controls the number of candidate completions and n specifies how many to return – best_of must be greater than n.\r\n\r\nNote: Because this parameter generates many completions, it can quickly consume your token quota. Use carefully and ensure that you have reasonable settings for max_tokens and stop.");
+            toolTip1.SetToolTip(textBoxSuffix, "The suffix that comes after a completion of inserted text.");
         }
 
         private void hScrollBarTemperature_Scroll(object sender, ScrollEventArgs e)
@@ -487,6 +492,31 @@ namespace ChatGPT_client
         private void rtbChat_LinkClicked(object sender, LinkClickedEventArgs e)
         {
             Process.Start(new ProcessStartInfo { FileName = e.LinkText, UseShellExecute = true });
+        }
+
+        private void checkBoxStream_CheckedChanged(object sender, EventArgs e)
+        {
+            _chatGPTAPIs.Stream = ((CheckBox)sender).Checked;
+        }
+
+        private void checkBoxEcho_CheckedChanged(object sender, EventArgs e)
+        {
+            _chatGPTAPIs.Echo = ((CheckBox)sender).Checked;
+        }
+
+        private void numericUpDownN_ValueChanged(object sender, EventArgs e)
+        {
+            _chatGPTAPIs.N = Decimal.ToUInt32(((NumericUpDown)sender).Value);
+        }
+
+        private void numericUpDownBestOf_ValueChanged(object sender, EventArgs e)
+        {
+            _chatGPTAPIs.Best_of = Decimal.ToUInt32(((NumericUpDown)sender).Value);
+        }
+
+        private void textBoxSuffix_TextChanged(object sender, EventArgs e)
+        {
+            _chatGPTAPIs.Suffix = ((System.Windows.Forms.TextBox)sender).Text;
         }
     }
 

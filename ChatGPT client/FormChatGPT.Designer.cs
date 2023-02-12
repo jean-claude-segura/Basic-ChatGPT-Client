@@ -43,6 +43,17 @@
             this.rtbConsole = new System.Windows.Forms.RichTextBox();
             this.tabConfiguration = new System.Windows.Forms.TabPage();
             this.panelSettings = new System.Windows.Forms.Panel();
+            this.textBoxSuffix = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.numericUpDownBestOf = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownN = new System.Windows.Forms.NumericUpDown();
+            this.textBoxMaxTokens = new System.Windows.Forms.TextBox();
+            this.hScrollBarMaxTokens = new System.Windows.Forms.HScrollBar();
+            this.label12 = new System.Windows.Forms.Label();
+            this.checkBoxEcho = new System.Windows.Forms.CheckBox();
+            this.checkBoxStream = new System.Windows.Forms.CheckBox();
             this.panelModel = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.listViewModelPermissions = new System.Windows.Forms.ListView();
@@ -89,6 +100,8 @@
             this.tabConsole.SuspendLayout();
             this.tabConfiguration.SuspendLayout();
             this.panelSettings.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBestOf)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownN)).BeginInit();
             this.panelModel.SuspendLayout();
             this.panelApiKey.SuspendLayout();
             this.tabPageInformations.SuspendLayout();
@@ -105,7 +118,7 @@
             this.rtbChat.Name = "rtbChat";
             this.rtbChat.ReadOnly = true;
             this.rtbChat.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.rtbChat.Size = new System.Drawing.Size(757, 410);
+            this.rtbChat.Size = new System.Drawing.Size(757, 524);
             this.rtbChat.TabIndex = 0;
             this.rtbChat.Text = "";
             this.rtbChat.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.rtbChat_LinkClicked);
@@ -117,7 +130,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbSaisie.Enabled = false;
             this.tbSaisie.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tbSaisie.Location = new System.Drawing.Point(7, 424);
+            this.tbSaisie.Location = new System.Drawing.Point(7, 538);
             this.tbSaisie.Multiline = true;
             this.tbSaisie.Name = "tbSaisie";
             this.tbSaisie.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -132,7 +145,7 @@
             this.progressBar1.BackColor = System.Drawing.Color.DarkRed;
             this.progressBar1.Enabled = false;
             this.progressBar1.ForeColor = System.Drawing.Color.Red;
-            this.progressBar1.Location = new System.Drawing.Point(7, 517);
+            this.progressBar1.Location = new System.Drawing.Point(7, 631);
             this.progressBar1.MarqueeAnimationSpeed = 1;
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -147,7 +160,7 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.toolStripProgressBar1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 593);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 707);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
             this.statusStrip1.Size = new System.Drawing.Size(780, 22);
@@ -186,7 +199,7 @@
             this.tabControl.Multiline = true;
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(780, 587);
+            this.tabControl.Size = new System.Drawing.Size(780, 701);
             this.tabControl.TabIndex = 4;
             this.tabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl_Selected);
             this.tabControl.Click += new System.EventHandler(this.Conversation_Click);
@@ -203,7 +216,7 @@
             this.tabConversation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabConversation.Name = "tabConversation";
             this.tabConversation.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabConversation.Size = new System.Drawing.Size(772, 554);
+            this.tabConversation.Size = new System.Drawing.Size(772, 668);
             this.tabConversation.TabIndex = 0;
             // 
             // resetButton
@@ -211,7 +224,7 @@
             this.resetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.resetButton.BackgroundImage = global::ChatGPT_client.Properties.Resources.reset_password;
             this.resetButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.resetButton.Location = new System.Drawing.Point(735, 517);
+            this.resetButton.Location = new System.Drawing.Point(735, 631);
             this.resetButton.Name = "resetButton";
             this.resetButton.Size = new System.Drawing.Size(29, 29);
             this.resetButton.TabIndex = 3;
@@ -227,7 +240,7 @@
             this.tabConsole.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabConsole.Name = "tabConsole";
             this.tabConsole.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabConsole.Size = new System.Drawing.Size(772, 554);
+            this.tabConsole.Size = new System.Drawing.Size(772, 668);
             this.tabConsole.TabIndex = 1;
             // 
             // rtbConsole
@@ -241,7 +254,7 @@
             this.rtbConsole.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.rtbConsole.Name = "rtbConsole";
             this.rtbConsole.ReadOnly = true;
-            this.rtbConsole.Size = new System.Drawing.Size(755, 535);
+            this.rtbConsole.Size = new System.Drawing.Size(755, 649);
             this.rtbConsole.TabIndex = 0;
             this.rtbConsole.Text = "";
             // 
@@ -254,12 +267,23 @@
             this.tabConfiguration.Location = new System.Drawing.Point(4, 29);
             this.tabConfiguration.Name = "tabConfiguration";
             this.tabConfiguration.Padding = new System.Windows.Forms.Padding(3);
-            this.tabConfiguration.Size = new System.Drawing.Size(772, 554);
+            this.tabConfiguration.Size = new System.Drawing.Size(772, 668);
             this.tabConfiguration.TabIndex = 2;
             // 
             // panelSettings
             // 
             this.panelSettings.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelSettings.Controls.Add(this.textBoxSuffix);
+            this.panelSettings.Controls.Add(this.label15);
+            this.panelSettings.Controls.Add(this.label14);
+            this.panelSettings.Controls.Add(this.label13);
+            this.panelSettings.Controls.Add(this.numericUpDownBestOf);
+            this.panelSettings.Controls.Add(this.numericUpDownN);
+            this.panelSettings.Controls.Add(this.textBoxMaxTokens);
+            this.panelSettings.Controls.Add(this.hScrollBarMaxTokens);
+            this.panelSettings.Controls.Add(this.label12);
+            this.panelSettings.Controls.Add(this.checkBoxEcho);
+            this.panelSettings.Controls.Add(this.checkBoxStream);
             this.panelSettings.Controls.Add(this.panelModel);
             this.panelSettings.Controls.Add(this.textBoxTopP);
             this.panelSettings.Controls.Add(this.hScrollBarTopP);
@@ -277,8 +301,109 @@
             this.panelSettings.Controls.Add(this.label2);
             this.panelSettings.Location = new System.Drawing.Point(8, 65);
             this.panelSettings.Name = "panelSettings";
-            this.panelSettings.Size = new System.Drawing.Size(754, 486);
+            this.panelSettings.Size = new System.Drawing.Size(754, 521);
             this.panelSettings.TabIndex = 18;
+            // 
+            // textBoxSuffix
+            // 
+            this.textBoxSuffix.Location = new System.Drawing.Point(139, 281);
+            this.textBoxSuffix.Name = "textBoxSuffix";
+            this.textBoxSuffix.Size = new System.Drawing.Size(604, 27);
+            this.textBoxSuffix.TabIndex = 41;
+            this.textBoxSuffix.TextChanged += new System.EventHandler(this.textBoxSuffix_TextChanged);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(3, 284);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(46, 20);
+            this.label15.TabIndex = 40;
+            this.label15.Text = "Suffix";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(579, 250);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(57, 20);
+            this.label14.TabIndex = 39;
+            this.label14.Text = "Best_of";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(361, 250);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(20, 20);
+            this.label13.TabIndex = 38;
+            this.label13.Text = "N";
+            // 
+            // numericUpDownBestOf
+            // 
+            this.numericUpDownBestOf.Location = new System.Drawing.Point(642, 248);
+            this.numericUpDownBestOf.Name = "numericUpDownBestOf";
+            this.numericUpDownBestOf.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.numericUpDownBestOf.Size = new System.Drawing.Size(101, 27);
+            this.numericUpDownBestOf.TabIndex = 37;
+            this.numericUpDownBestOf.ValueChanged += new System.EventHandler(this.numericUpDownBestOf_ValueChanged);
+            // 
+            // numericUpDownN
+            // 
+            this.numericUpDownN.Location = new System.Drawing.Point(387, 248);
+            this.numericUpDownN.Name = "numericUpDownN";
+            this.numericUpDownN.Size = new System.Drawing.Size(101, 27);
+            this.numericUpDownN.TabIndex = 36;
+            this.numericUpDownN.ValueChanged += new System.EventHandler(this.numericUpDownN_ValueChanged);
+            // 
+            // textBoxMaxTokens
+            // 
+            this.textBoxMaxTokens.Location = new System.Drawing.Point(139, 315);
+            this.textBoxMaxTokens.Name = "textBoxMaxTokens";
+            this.textBoxMaxTokens.ReadOnly = true;
+            this.textBoxMaxTokens.Size = new System.Drawing.Size(59, 27);
+            this.textBoxMaxTokens.TabIndex = 35;
+            // 
+            // hScrollBarMaxTokens
+            // 
+            this.hScrollBarMaxTokens.LargeChange = 1;
+            this.hScrollBarMaxTokens.Location = new System.Drawing.Point(241, 315);
+            this.hScrollBarMaxTokens.Maximum = 4000;
+            this.hScrollBarMaxTokens.Name = "hScrollBarMaxTokens";
+            this.hScrollBarMaxTokens.Size = new System.Drawing.Size(502, 26);
+            this.hScrollBarMaxTokens.TabIndex = 34;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(3, 321);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(86, 20);
+            this.label12.TabIndex = 33;
+            this.label12.Text = "Max_tokens";
+            // 
+            // checkBoxEcho
+            // 
+            this.checkBoxEcho.AutoSize = true;
+            this.checkBoxEcho.Location = new System.Drawing.Point(139, 249);
+            this.checkBoxEcho.Name = "checkBoxEcho";
+            this.checkBoxEcho.Size = new System.Drawing.Size(63, 24);
+            this.checkBoxEcho.TabIndex = 32;
+            this.checkBoxEcho.Text = "Echo";
+            this.checkBoxEcho.UseVisualStyleBackColor = true;
+            this.checkBoxEcho.CheckedChanged += new System.EventHandler(this.checkBoxEcho_CheckedChanged);
+            // 
+            // checkBoxStream
+            // 
+            this.checkBoxStream.AutoSize = true;
+            this.checkBoxStream.Enabled = false;
+            this.checkBoxStream.Location = new System.Drawing.Point(3, 249);
+            this.checkBoxStream.Name = "checkBoxStream";
+            this.checkBoxStream.Size = new System.Drawing.Size(78, 24);
+            this.checkBoxStream.TabIndex = 31;
+            this.checkBoxStream.Text = "Stream";
+            this.checkBoxStream.UseVisualStyleBackColor = true;
+            this.checkBoxStream.CheckedChanged += new System.EventHandler(this.checkBoxStream_CheckedChanged);
             // 
             // panelModel
             // 
@@ -427,7 +552,7 @@
             // 
             // textBoxTopP
             // 
-            this.textBoxTopP.Location = new System.Drawing.Point(139, 351);
+            this.textBoxTopP.Location = new System.Drawing.Point(139, 385);
             this.textBoxTopP.Name = "textBoxTopP";
             this.textBoxTopP.ReadOnly = true;
             this.textBoxTopP.Size = new System.Drawing.Size(59, 27);
@@ -436,7 +561,7 @@
             // hScrollBarTopP
             // 
             this.hScrollBarTopP.LargeChange = 1;
-            this.hScrollBarTopP.Location = new System.Drawing.Point(241, 351);
+            this.hScrollBarTopP.Location = new System.Drawing.Point(241, 385);
             this.hScrollBarTopP.Name = "hScrollBarTopP";
             this.hScrollBarTopP.Size = new System.Drawing.Size(502, 26);
             this.hScrollBarTopP.TabIndex = 29;
@@ -445,7 +570,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 357);
+            this.label5.Location = new System.Drawing.Point(3, 391);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(49, 20);
             this.label5.TabIndex = 28;
@@ -455,7 +580,7 @@
             // 
             this.buttonLoadSettings.BackgroundImage = global::ChatGPT_client.Properties.Resources.refresh;
             this.buttonLoadSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonLoadSettings.Location = new System.Drawing.Point(679, 450);
+            this.buttonLoadSettings.Location = new System.Drawing.Point(679, 484);
             this.buttonLoadSettings.Name = "buttonLoadSettings";
             this.buttonLoadSettings.Size = new System.Drawing.Size(29, 29);
             this.buttonLoadSettings.TabIndex = 27;
@@ -466,7 +591,7 @@
             // 
             this.buttonSaveSettings.BackgroundImage = global::ChatGPT_client.Properties.Resources.disk;
             this.buttonSaveSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonSaveSettings.Location = new System.Drawing.Point(714, 450);
+            this.buttonSaveSettings.Location = new System.Drawing.Point(714, 484);
             this.buttonSaveSettings.Name = "buttonSaveSettings";
             this.buttonSaveSettings.Size = new System.Drawing.Size(29, 29);
             this.buttonSaveSettings.TabIndex = 26;
@@ -475,7 +600,7 @@
             // 
             // textBoxFrequencyPenalty
             // 
-            this.textBoxFrequencyPenalty.Location = new System.Drawing.Point(139, 421);
+            this.textBoxFrequencyPenalty.Location = new System.Drawing.Point(139, 455);
             this.textBoxFrequencyPenalty.Name = "textBoxFrequencyPenalty";
             this.textBoxFrequencyPenalty.ReadOnly = true;
             this.textBoxFrequencyPenalty.Size = new System.Drawing.Size(59, 27);
@@ -483,7 +608,7 @@
             // 
             // textBoxPresencePenalty
             // 
-            this.textBoxPresencePenalty.Location = new System.Drawing.Point(139, 386);
+            this.textBoxPresencePenalty.Location = new System.Drawing.Point(139, 420);
             this.textBoxPresencePenalty.Name = "textBoxPresencePenalty";
             this.textBoxPresencePenalty.ReadOnly = true;
             this.textBoxPresencePenalty.Size = new System.Drawing.Size(59, 27);
@@ -491,7 +616,7 @@
             // 
             // textBoxTemperature
             // 
-            this.textBoxTemperature.Location = new System.Drawing.Point(139, 316);
+            this.textBoxTemperature.Location = new System.Drawing.Point(139, 350);
             this.textBoxTemperature.Name = "textBoxTemperature";
             this.textBoxTemperature.ReadOnly = true;
             this.textBoxTemperature.Size = new System.Drawing.Size(59, 27);
@@ -500,7 +625,7 @@
             // hScrollBarFrequencyPenalty
             // 
             this.hScrollBarFrequencyPenalty.LargeChange = 1;
-            this.hScrollBarFrequencyPenalty.Location = new System.Drawing.Point(241, 421);
+            this.hScrollBarFrequencyPenalty.Location = new System.Drawing.Point(241, 455);
             this.hScrollBarFrequencyPenalty.Maximum = 200;
             this.hScrollBarFrequencyPenalty.Minimum = -200;
             this.hScrollBarFrequencyPenalty.Name = "hScrollBarFrequencyPenalty";
@@ -511,7 +636,7 @@
             // hScrollBarPresencePenalty
             // 
             this.hScrollBarPresencePenalty.LargeChange = 1;
-            this.hScrollBarPresencePenalty.Location = new System.Drawing.Point(241, 386);
+            this.hScrollBarPresencePenalty.Location = new System.Drawing.Point(241, 420);
             this.hScrollBarPresencePenalty.Maximum = 200;
             this.hScrollBarPresencePenalty.Minimum = -200;
             this.hScrollBarPresencePenalty.Name = "hScrollBarPresencePenalty";
@@ -522,7 +647,7 @@
             // hScrollBarTemperature
             // 
             this.hScrollBarTemperature.LargeChange = 1;
-            this.hScrollBarTemperature.Location = new System.Drawing.Point(241, 316);
+            this.hScrollBarTemperature.Location = new System.Drawing.Point(241, 350);
             this.hScrollBarTemperature.Maximum = 99;
             this.hScrollBarTemperature.Name = "hScrollBarTemperature";
             this.hScrollBarTemperature.Size = new System.Drawing.Size(502, 26);
@@ -532,7 +657,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 427);
+            this.label4.Location = new System.Drawing.Point(3, 461);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(131, 20);
             this.label4.TabIndex = 19;
@@ -541,7 +666,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 392);
+            this.label3.Location = new System.Drawing.Point(3, 426);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(122, 20);
             this.label3.TabIndex = 18;
@@ -550,7 +675,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 322);
+            this.label2.Location = new System.Drawing.Point(3, 356);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(93, 20);
             this.label2.TabIndex = 17;
@@ -638,7 +763,7 @@
             this.tabPageInformations.ImageIndex = 3;
             this.tabPageInformations.Location = new System.Drawing.Point(4, 29);
             this.tabPageInformations.Name = "tabPageInformations";
-            this.tabPageInformations.Size = new System.Drawing.Size(772, 554);
+            this.tabPageInformations.Size = new System.Drawing.Size(772, 668);
             this.tabPageInformations.TabIndex = 3;
             // 
             // richTextBoxInformations
@@ -650,7 +775,7 @@
             this.richTextBoxInformations.Location = new System.Drawing.Point(8, 3);
             this.richTextBoxInformations.Name = "richTextBoxInformations";
             this.richTextBoxInformations.ReadOnly = true;
-            this.richTextBoxInformations.Size = new System.Drawing.Size(756, 548);
+            this.richTextBoxInformations.Size = new System.Drawing.Size(756, 662);
             this.richTextBoxInformations.TabIndex = 0;
             this.richTextBoxInformations.Text = resources.GetString("richTextBoxInformations.Text");
             this.richTextBoxInformations.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.richTextBoxInformations_LinkClicked);
@@ -671,7 +796,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.ClientSize = new System.Drawing.Size(780, 615);
+            this.ClientSize = new System.Drawing.Size(780, 729);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.statusStrip1);
             this.DoubleBuffered = true;
@@ -688,6 +813,8 @@
             this.tabConfiguration.ResumeLayout(false);
             this.panelSettings.ResumeLayout(false);
             this.panelSettings.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBestOf)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownN)).EndInit();
             this.panelModel.ResumeLayout(false);
             this.panelModel.PerformLayout();
             this.panelApiKey.ResumeLayout(false);
@@ -753,6 +880,17 @@
         private System.Windows.Forms.ListView listViewModelPermissions;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button resetButton;
+        private System.Windows.Forms.CheckBox checkBoxStream;
+        private System.Windows.Forms.CheckBox checkBoxEcho;
+        private System.Windows.Forms.TextBox textBoxMaxTokens;
+        private System.Windows.Forms.HScrollBar hScrollBarMaxTokens;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.NumericUpDown numericUpDownN;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.NumericUpDown numericUpDownBestOf;
+        private System.Windows.Forms.TextBox textBoxSuffix;
+        private System.Windows.Forms.Label label15;
     }
 }
 

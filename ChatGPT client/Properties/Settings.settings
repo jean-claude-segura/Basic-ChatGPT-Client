@@ -8,7 +8,7 @@
     <Setting Name="suffix" Description="The suffix that comes after a completion of inserted text." Type="System.String" Scope="User">
       <Value Profile="(Default)">null</Value>
     </Setting>
-    <Setting Name="max_tokens" Description="The maximum number of tokens to generate in the completion." Type="System.Int32" Scope="User">
+    <Setting Name="max_tokens" Description="The maximum number of tokens to generate in the completion." Type="System.UInt32" Scope="User">
       <Value Profile="(Default)">4000</Value>
     </Setting>
     <Setting Name="temperature" Description="What sampling temperature to use. Higher values means the model will take more risks. Try 0.9 for more creative applications, and 0 (argmax sampling) for ones with a well-defined answer." Type="System.Decimal" Scope="User">
@@ -17,7 +17,7 @@
     <Setting Name="top_p" Description="An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered." Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
-    <Setting Name="n" Description="How many completions to generate for each prompt." Type="System.Int32" Scope="User">
+    <Setting Name="n" Description="How many completions to generate for each prompt." Type="System.UInt32" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
     <Setting Name="stream" Description="Whether to stream back partial progress. If set, tokens will be sent as data-only server-sent events as they become available, with the stream terminated by a data: [DONE] message." Type="System.Boolean" Scope="User">
@@ -32,7 +32,7 @@
     <Setting Name="frequency_penalty" Description="Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim." Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">0.0</Value>
     </Setting>
-    <Setting Name="best_of" Description="Generates best_of completions server-side and returns the &quot;best&quot; (the one with the highest log probability per token). Results cannot be streamed." Type="System.Int32" Scope="User">
+    <Setting Name="best_of" Description="Generates best_of completions server-side and returns the &quot;best&quot; (the one with the highest log probability per token). Results cannot be streamed." Type="System.UInt32" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
   </Settings>

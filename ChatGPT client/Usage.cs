@@ -15,8 +15,8 @@ namespace ChatGPT_client
      */
     public class Usage
     {
-        public int Prompt_tokens { get; set; }
-        public int Completion_tokens { get; set; }
-        public int Total_tokens { get; set; }
+        public uint Prompt_tokens { get; set; }
+        public uint Completion_tokens { get; set; }
+        public uint Total_tokens { get; set; }
     }
 }

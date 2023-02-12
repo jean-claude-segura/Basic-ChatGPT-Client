@@ -9,8 +9,8 @@ namespace ChatGPT_client
 {
     public class Message
     {
-        public Message(string prompt, int max_tokens,
-              decimal temperature, decimal top_p, decimal frequency_penalty, decimal presence_penalty, List<string>? stop = null, string? model = null)
+        public Message(string model, string prompt, uint max_tokens,
+              decimal temperature, decimal top_p, decimal frequency_penalty, decimal presence_penalty, List<string>? stop = null, string? suffix = null)
         {
             Prompt = prompt;
             Max_tokens = max_tokens;
@@ -18,12 +18,13 @@ namespace ChatGPT_client
             Top_p = top_p;
             Frequency_penalty = frequency_penalty;
             Presence_penalty = presence_penalty;
-            if (stop is not null) Stop = stop;
-            if (model is not null) Model = model;
+            Stop = stop;
+            Model = model;
+            Suffix = suffix;
         }
 
-        public Message(List<string> history, int max_tokens,
-              decimal temperature, decimal top_p, decimal frequency_penalty, decimal presence_penalty, List<string>? stop = null, string? model = null)
+        public Message(string model, List<string> history, uint max_tokens,
+              decimal temperature, decimal top_p, decimal frequency_penalty, decimal presence_penalty, List<string>? stop = null, string? suffix = null)
         {
             Prompt = "";
             foreach (var item in history)
@@ -34,13 +35,14 @@ namespace ChatGPT_client
             Top_p = top_p;
             Frequency_penalty = frequency_penalty;
             Presence_penalty = presence_penalty;
-            if (stop is not null) Stop = stop;
-            if (model is not null) Model = model;
+            Stop = stop;
+            Model = model;
+            Suffix= suffix;
         }
 
         public string Model { get; set; } = "text-davinci-003";
         public string Prompt;
-        public int Max_tokens { get; set; }
+        public uint Max_tokens { get; set; }
         public decimal Temperature { get; set; }
         public decimal Top_p { get; set; }
         public decimal Frequency_penalty { get; set; }
@@ -49,6 +51,7 @@ namespace ChatGPT_client
         public List<string>? Stop { get; set; } = null;
         public int N { get; set; } = 1;
         public int Best_of { get; set; } = 1;
-        //public int Logprobs { get; set; } = 1;
+        public string? Suffix { get; set; } = null;
+        public uint? Logprobs { get; set; } = null;
     }
 }

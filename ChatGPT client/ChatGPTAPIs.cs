@@ -23,18 +23,20 @@ namespace ChatGPT_client
         static private List<string> _completions = new List<string>();
         static public List<string> Completions { get => _completions; }
         static private string? _openAIApiKey { get; set; } = null;
-        public int Tokens { get; set; }
+        public uint Tokens { get; set; }
         public Model? Model { get; private set; } = null;
-        public int Max_tokens { get; set; }
+        public uint Max_tokens { get; set; }
         public decimal Temperature { get; set; }
         public decimal Top_p { get; set; }
         public decimal Frequency_penalty { get; set; }
         public decimal Presence_penalty { get; set; }
         public bool Echo { get; set; } = false;
         public List<string>? Stop { get; set; } = null;
-        public int N { get; set; } = 1;
-        public int Best_of { get; set; } = 1;
+        public uint N { get; set; } = 1;
+        public uint Best_of { get; set; } = 1;
         public bool Stream { get; set; } = false;
+        public string? Suffix { get; set; } = null;
+        public uint? Logprobs { get; set; } = null;
 
         private List<Tuple<string, string>> _conversation { get; set; } = new List<Tuple<string, string>>();
         public List<Tuple<string, string>> Conversation { get => _conversation; }
@@ -182,7 +184,7 @@ namespace ChatGPT_client
                                 // "This model's maximum context length is 4097 tokens, however you requested 4107 tokens (107 in your prompt; 4000 for the completion). Please reduce your prompt; or completion length."
                                 var temp = completion.Error.Message.Substring(completion.Error.Message.IndexOf(" tokens, however you requested ") + " tokens, however you requested ".Length);
                                 temp = temp.Substring(0, temp.IndexOf(' '));
-                                message.Max_tokens = Tokens - (int.Parse(temp) - Tokens);
+                                message.Max_tokens = Tokens - (uint.Parse(temp) - Tokens);
                                 return GetCompletion(message);
                             }
                             else
@@ -224,7 +226,7 @@ namespace ChatGPT_client
         {
             _conversation.Add(new Tuple<string, string>("HUMAN:", prompt));
 
-            var message = new Message(_conversation.Select(_ => _.Item1 + _.Item2).ToList().Concat(new List<string>() { "AI:" }).ToList(), Max_tokens, Temperature, Top_p, Frequency_penalty, Presence_penalty, new() { "HUMAN:" }, Model.Id);
+            var message = new Message(Model.Id, _conversation.Select(_ => _.Item1 + _.Item2).ToList().Concat(new List<string>() { "AI:" }).ToList(), Max_tokens, Temperature, Top_p, Frequency_penalty, Presence_penalty, new() { "HUMAN:" }, Suffix);
 
             var res = GetCompletion(message);
 
@@ -240,7 +242,7 @@ namespace ChatGPT_client
         /// <returns></returns>
         public Completion? GetCompletionSingle(string prompt)
         {
-            var message = new Message(prompt, Max_tokens, Temperature, Top_p, Frequency_penalty, Presence_penalty, null, Model.Id);
+            var message = new Message(Model.Id, prompt, Max_tokens, Temperature, Top_p, Frequency_penalty, Presence_penalty, null, Suffix);
 
             return GetCompletion(message);
         }

@@ -62,9 +62,9 @@ namespace ChatGPT_client.Properties {
         [global::System.Configuration.SettingsDescriptionAttribute("The maximum number of tokens to generate in the completion.")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("4000")]
-        public int max_tokens {
+        public uint max_tokens {
             get {
-                return ((int)(this["max_tokens"]));
+                return ((uint)(this["max_tokens"]));
             }
             set {
                 this["max_tokens"] = value;
@@ -114,9 +114,9 @@ namespace ChatGPT_client.Properties {
         [global::System.Configuration.SettingsDescriptionAttribute("How many completions to generate for each prompt.")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public int n {
+        public uint n {
             get {
-                return ((int)(this["n"]));
+                return ((uint)(this["n"]));
             }
             set {
                 this["n"] = value;
@@ -201,9 +201,9 @@ namespace ChatGPT_client.Properties {
             "e highest log probability per token). Results cannot be streamed.")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public int best_of {
+        public uint best_of {
             get {
-                return ((int)(this["best_of"]));
+                return ((uint)(this["best_of"]));
             }
             set {
                 this["best_of"] = value;
