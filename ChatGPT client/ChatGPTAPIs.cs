@@ -132,6 +132,37 @@ namespace ChatGPT_client
             }
         }
 
+        static private T[]? HTTPChatGPTApiPostMessageStream<T>(string apiCall, Message message)
+        {
+            try
+            {
+                var jsonRequest = JsonConvert.SerializeObject(
+                    message,
+                    Formatting.Indented,
+                    new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() }
+                    );
+
+                // Pour historique ;
+                _completions.Add(JsonConvert.SerializeObject(JsonConvert.DeserializeObject(jsonRequest), Formatting.Indented));
+
+                var json = HTTPChatGPTApiPost(apiCall, jsonRequest);
+
+
+                var streams = json.Split("data: "); //json.Split("\r\n");
+                foreach (var stream in streams)
+                {
+                    // Pour historique :
+                    _completions.Add(JsonConvert.SerializeObject(JsonConvert.DeserializeObject<dynamic>(json), Formatting.Indented));
+                }
+
+                return JsonConvert.DeserializeObject<T[]?>(streams.ToString());
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         static private T? HTTPChatGPTApiPostMessage<T>(string apiCall, Message message)
         {
             try
@@ -229,7 +260,7 @@ namespace ChatGPT_client
         {
             _conversation.Add(new Tuple<string, string>("HUMAN:", prompt));
 
-            var message = new Message(Model.Id, _conversation.Select(_ => _.Item1 + _.Item2).ToList().Concat(new List<string>() { "AI:" }).ToList(), Max_tokens, Temperature, Top_p, Frequency_penalty, Presence_penalty, new() { "HUMAN:" }, Suffix);
+            var message = new Message(Model.Id, _conversation.Select(_ => _.Item1 + _.Item2).ToList().Concat(new List<string>() { "AI:" }).ToList(), Max_tokens, Temperature, Top_p, Frequency_penalty, Presence_penalty, new() { "HUMAN:" }, Suffix, Stream);
 
             var res = GetCompletion(message);
 
@@ -245,14 +276,13 @@ namespace ChatGPT_client
         /// <returns></returns>
         public Completion? GetCompletionSingle(string prompt)
         {
-            var message = new Message(Model.Id, prompt, Max_tokens, Temperature, Top_p, Frequency_penalty, Presence_penalty, null, Suffix);
+            var message = new Message(Model.Id, prompt, Max_tokens, Temperature, Top_p, Frequency_penalty, Presence_penalty, null, Suffix, Stream);
 
             return GetCompletion(message);
         }
 
         public void ClearChat()
         {
-            //_completions.Clear();
             _conversation.Clear();
             Max_tokens = Tokens;
         }

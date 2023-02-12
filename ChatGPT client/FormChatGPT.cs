@@ -95,10 +95,10 @@ namespace ChatGPT_client
 
         public void UpdateRichTextListBox2Method(List<string> responses)
         {
-            rtbConsole.Clear();
-            foreach (var response in responses) rtbConsole.AppendText(response + Environment.NewLine);
-            rtbConsole.SelectionStart = rtbConsole.Text.Length;
-            rtbConsole.ScrollToCaret();
+            rtbJournal.Clear();
+            foreach (var response in responses) rtbJournal.AppendText(response + Environment.NewLine);
+            rtbJournal.SelectionStart = rtbJournal.Text.Length;
+            rtbJournal.ScrollToCaret();
         }
 
         public void UpdateComboBoxModelsMethod(string[] modelsIds)
@@ -201,7 +201,7 @@ namespace ChatGPT_client
         {
             _chatGPTAPIs.ClearChat();
             rtbChat.Clear();
-            //rtbConsole.Clear();
+            //rtbJournal.Clear();
         }
 
         private void Conversation_Click(object sender, EventArgs e)
@@ -374,11 +374,13 @@ namespace ChatGPT_client
             hScrollBarTopP.Value = (int)(_chatGPTAPIs.Top_p * 100);
             hScrollBarPresencePenalty.Value = (int)(_chatGPTAPIs.Presence_penalty * 100);
             hScrollBarFrequencyPenalty.Value = (int)(_chatGPTAPIs.Frequency_penalty * 100);
+            hScrollBarMaxTokens.Value = (int)_chatGPTAPIs.Max_tokens;
 
             textBoxTemperature.Text = _chatGPTAPIs.Temperature.ToString();
             textBoxTopP.Text = _chatGPTAPIs.Top_p.ToString();
             textBoxPresencePenalty.Text = _chatGPTAPIs.Presence_penalty.ToString();
             textBoxFrequencyPenalty.Text = _chatGPTAPIs.Frequency_penalty.ToString();
+            textBoxMaxTokens.Text = _chatGPTAPIs.Max_tokens.ToString();
 
             textBoxSuffix.Text = _chatGPTAPIs.Suffix;
 
@@ -398,6 +400,12 @@ namespace ChatGPT_client
             toolTip1.SetToolTip(numericUpDownN, "How many completions to generate for each prompt.\r\n\r\nNote: Because this parameter generates many completions, it can quickly consume your token quota. Use carefully and ensure that you have reasonable settings for max_tokens and stop.");
             toolTip1.SetToolTip(numericUpDownBestOf, "Generates best_of completions server-side and returns the \"best\" (the one with the highest log probability per token). Results cannot be streamed.\r\n\r\nWhen used with n, best_of controls the number of candidate completions and n specifies how many to return – best_of must be greater than n.\r\n\r\nNote: Because this parameter generates many completions, it can quickly consume your token quota. Use carefully and ensure that you have reasonable settings for max_tokens and stop.");
             toolTip1.SetToolTip(textBoxSuffix, "The suffix that comes after a completion of inserted text.");
+        }
+
+        private void hScrollBarMaxTokens_Scroll(object sender, ScrollEventArgs e)
+        {
+            textBoxMaxTokens.Text = e.NewValue.ToString();
+            _chatGPTAPIs.Max_tokens = (uint)e.NewValue;
         }
 
         private void hScrollBarTemperature_Scroll(object sender, ScrollEventArgs e)
@@ -552,34 +560,36 @@ namespace ChatGPT_client
             toolStripMenuItemRTBConversationClear.Enabled = rtbChat.Text.Length > 0;
         }
 
-        private void contextMenuStripRTBConsoleMenuItemClear_Click(object sender, EventArgs e)
+        private void contextMenuStripRTBJournalMenuItemClear_Click(object sender, EventArgs e)
         {
-            if (rtbConsole.Text.Length > 0)
+            if (rtbJournal.Text.Length > 0)
             {
                 _chatGPTAPIs.ClearLog();
-                rtbConsole.Clear();
+                rtbJournal.Clear();
             }
         }
 
-        private void contextMenuStripRTBConsole_Opening(object sender, CancelEventArgs e)
+        private void contextMenuStripRTBJournal_Opening(object sender, CancelEventArgs e)
         {
-            toolStripMenuItemRTBConsoleClear.Enabled = rtbConsole.Text.Length > 0;
+            toolStripMenuItemRTBJournalSelectAll.Enabled = rtbJournal.Text.Length > 0;
+            toolStripMenuItemRTBJournalCopy.Enabled = !string.IsNullOrWhiteSpace(rtbJournal.SelectedText);
+            toolStripMenuItemRTBJournalClear.Enabled = rtbJournal.Text.Length > 0;
         }
 
-        private void toolStripMenuItemRTBConsoleCopy_Click(object sender, EventArgs e)
+        private void toolStripMenuItemRTBJournalCopy_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(rtbConsole.SelectedText))
+            if (!string.IsNullOrWhiteSpace(rtbJournal.SelectedText))
             {
-                rtbConsole.Copy();
+                rtbJournal.Copy();
             }
         }
 
-        private void toolStripMenuItemRTBConsoleSelectAll_Click(object sender, EventArgs e)
+        private void toolStripMenuItemRTBJournalSelectAll_Click(object sender, EventArgs e)
         {
-            if (rtbConsole.Text.Length > 0)
+            if (rtbJournal.Text.Length > 0)
             {
-                rtbConsole.Focus();
-                rtbConsole.SelectAll();
+                rtbJournal.Focus();
+                rtbJournal.SelectAll();
             }
         }
     }

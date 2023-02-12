@@ -45,10 +45,14 @@
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabConversation = new System.Windows.Forms.TabPage();
             this.resetButton = new System.Windows.Forms.Button();
-            this.tabConsole = new System.Windows.Forms.TabPage();
-            this.rtbConsole = new System.Windows.Forms.RichTextBox();
-            this.contextMenuStripRTBConsole = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItemRTBConsoleClear = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabJournal = new System.Windows.Forms.TabPage();
+            this.rtbJournal = new System.Windows.Forms.RichTextBox();
+            this.contextMenuStripRTBJournal = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItemRTBJournalCopy = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItemRTBJournalSelectAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItemRTBJournalClear = new System.Windows.Forms.ToolStripMenuItem();
             this.tabConfiguration = new System.Windows.Forms.TabPage();
             this.panelSettings = new System.Windows.Forms.Panel();
             this.textBoxSuffix = new System.Windows.Forms.TextBox();
@@ -102,16 +106,12 @@
             this.richTextBoxInformations = new System.Windows.Forms.RichTextBox();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItemRTBConsoleCopy = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItemRTBConsoleSelectAll = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripRTBConversation.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabConversation.SuspendLayout();
-            this.tabConsole.SuspendLayout();
-            this.contextMenuStripRTBConsole.SuspendLayout();
+            this.tabJournal.SuspendLayout();
+            this.contextMenuStripRTBJournal.SuspendLayout();
             this.tabConfiguration.SuspendLayout();
             this.panelSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBestOf)).BeginInit();
@@ -248,7 +248,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl.Controls.Add(this.tabConversation);
-            this.tabControl.Controls.Add(this.tabConsole);
+            this.tabControl.Controls.Add(this.tabJournal);
             this.tabControl.Controls.Add(this.tabConfiguration);
             this.tabControl.Controls.Add(this.tabPageInformations);
             this.tabControl.ImageList = this.imageList1;
@@ -290,53 +290,77 @@
             this.resetButton.UseVisualStyleBackColor = true;
             this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
-            // tabConsole
+            // tabJournal
             // 
-            this.tabConsole.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.tabConsole.Controls.Add(this.rtbConsole);
-            this.tabConsole.ImageIndex = 1;
-            this.tabConsole.Location = new System.Drawing.Point(4, 29);
-            this.tabConsole.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabConsole.Name = "tabConsole";
-            this.tabConsole.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabConsole.Size = new System.Drawing.Size(772, 592);
-            this.tabConsole.TabIndex = 1;
+            this.tabJournal.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.tabJournal.Controls.Add(this.rtbJournal);
+            this.tabJournal.ImageIndex = 1;
+            this.tabJournal.Location = new System.Drawing.Point(4, 29);
+            this.tabJournal.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabJournal.Name = "tabJournal";
+            this.tabJournal.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabJournal.Size = new System.Drawing.Size(772, 592);
+            this.tabJournal.TabIndex = 1;
             // 
-            // rtbConsole
+            // rtbJournal
             // 
-            this.rtbConsole.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.rtbJournal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtbConsole.BackColor = System.Drawing.SystemColors.WindowText;
-            this.rtbConsole.ContextMenuStrip = this.contextMenuStripRTBConsole;
-            this.rtbConsole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.rtbConsole.Location = new System.Drawing.Point(9, 9);
-            this.rtbConsole.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.rtbConsole.Name = "rtbConsole";
-            this.rtbConsole.ReadOnly = true;
-            this.rtbConsole.Size = new System.Drawing.Size(755, 573);
-            this.rtbConsole.TabIndex = 0;
-            this.rtbConsole.Text = "";
+            this.rtbJournal.BackColor = System.Drawing.SystemColors.WindowText;
+            this.rtbJournal.ContextMenuStrip = this.contextMenuStripRTBJournal;
+            this.rtbJournal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.rtbJournal.Location = new System.Drawing.Point(9, 9);
+            this.rtbJournal.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.rtbJournal.Name = "rtbJournal";
+            this.rtbJournal.ReadOnly = true;
+            this.rtbJournal.Size = new System.Drawing.Size(755, 573);
+            this.rtbJournal.TabIndex = 0;
+            this.rtbJournal.Text = "";
             // 
-            // contextMenuStripRTBConsole
+            // contextMenuStripRTBJournal
             // 
-            this.contextMenuStripRTBConsole.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStripRTBConsole.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemRTBConsoleCopy,
+            this.contextMenuStripRTBJournal.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStripRTBJournal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemRTBJournalCopy,
             this.toolStripSeparator4,
-            this.toolStripMenuItemRTBConsoleSelectAll,
+            this.toolStripMenuItemRTBJournalSelectAll,
             this.toolStripSeparator3,
-            this.toolStripMenuItemRTBConsoleClear});
-            this.contextMenuStripRTBConsole.Name = "contextMenuStripRTBConsole";
-            this.contextMenuStripRTBConsole.Size = new System.Drawing.Size(211, 116);
-            this.contextMenuStripRTBConsole.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStripRTBConsole_Opening);
+            this.toolStripMenuItemRTBJournalClear});
+            this.contextMenuStripRTBJournal.Name = "contextMenuStripRTBJournal";
+            this.contextMenuStripRTBJournal.Size = new System.Drawing.Size(192, 88);
+            this.contextMenuStripRTBJournal.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStripRTBJournal_Opening);
             // 
-            // toolStripMenuItemRTBConsoleClear
+            // toolStripMenuItemRTBJournalCopy
             // 
-            this.toolStripMenuItemRTBConsoleClear.Name = "toolStripMenuItemRTBConsoleClear";
-            this.toolStripMenuItemRTBConsoleClear.Size = new System.Drawing.Size(210, 24);
-            this.toolStripMenuItemRTBConsoleClear.Text = "Vider la fenêtre";
-            this.toolStripMenuItemRTBConsoleClear.Click += new System.EventHandler(this.contextMenuStripRTBConsoleMenuItemClear_Click);
+            this.toolStripMenuItemRTBJournalCopy.Name = "toolStripMenuItemRTBJournalCopy";
+            this.toolStripMenuItemRTBJournalCopy.Size = new System.Drawing.Size(191, 24);
+            this.toolStripMenuItemRTBJournalCopy.Text = "Copier";
+            this.toolStripMenuItemRTBJournalCopy.Click += new System.EventHandler(this.toolStripMenuItemRTBJournalCopy_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(188, 6);
+            // 
+            // toolStripMenuItemRTBJournalSelectAll
+            // 
+            this.toolStripMenuItemRTBJournalSelectAll.Name = "toolStripMenuItemRTBJournalSelectAll";
+            this.toolStripMenuItemRTBJournalSelectAll.Size = new System.Drawing.Size(191, 24);
+            this.toolStripMenuItemRTBJournalSelectAll.Text = "Sélectionner tout";
+            this.toolStripMenuItemRTBJournalSelectAll.Click += new System.EventHandler(this.toolStripMenuItemRTBJournalSelectAll_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(188, 6);
+            // 
+            // toolStripMenuItemRTBJournalClear
+            // 
+            this.toolStripMenuItemRTBJournalClear.Name = "toolStripMenuItemRTBJournalClear";
+            this.toolStripMenuItemRTBJournalClear.Size = new System.Drawing.Size(191, 24);
+            this.toolStripMenuItemRTBJournalClear.Text = "Vider la fenêtre";
+            this.toolStripMenuItemRTBJournalClear.Click += new System.EventHandler(this.contextMenuStripRTBJournalMenuItemClear_Click);
             // 
             // tabConfiguration
             // 
@@ -462,6 +486,7 @@
             this.hScrollBarMaxTokens.Name = "hScrollBarMaxTokens";
             this.hScrollBarMaxTokens.Size = new System.Drawing.Size(502, 26);
             this.hScrollBarMaxTokens.TabIndex = 34;
+            this.hScrollBarMaxTokens.Scroll += new System.Windows.Forms.ScrollEventHandler(this.hScrollBarMaxTokens_Scroll);
             // 
             // label12
             // 
@@ -489,7 +514,6 @@
             // 
             this.checkBoxStream.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBoxStream.AutoSize = true;
-            this.checkBoxStream.Enabled = false;
             this.checkBoxStream.Location = new System.Drawing.Point(3, 252);
             this.checkBoxStream.Name = "checkBoxStream";
             this.checkBoxStream.Size = new System.Drawing.Size(78, 24);
@@ -897,30 +921,6 @@
             this.imageList1.Images.SetKeyName(2, "settings.png");
             this.imageList1.Images.SetKeyName(3, "comment-info.png");
             // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(207, 6);
-            // 
-            // toolStripMenuItemRTBConsoleCopy
-            // 
-            this.toolStripMenuItemRTBConsoleCopy.Name = "toolStripMenuItemRTBConsoleCopy";
-            this.toolStripMenuItemRTBConsoleCopy.Size = new System.Drawing.Size(210, 24);
-            this.toolStripMenuItemRTBConsoleCopy.Text = "Copier";
-            this.toolStripMenuItemRTBConsoleCopy.Click += new System.EventHandler(this.toolStripMenuItemRTBConsoleCopy_Click);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(207, 6);
-            // 
-            // toolStripMenuItemRTBConsoleSelectAll
-            // 
-            this.toolStripMenuItemRTBConsoleSelectAll.Name = "toolStripMenuItemRTBConsoleSelectAll";
-            this.toolStripMenuItemRTBConsoleSelectAll.Size = new System.Drawing.Size(210, 24);
-            this.toolStripMenuItemRTBConsoleSelectAll.Text = "Sélectionner tout";
-            this.toolStripMenuItemRTBConsoleSelectAll.Click += new System.EventHandler(this.toolStripMenuItemRTBConsoleSelectAll_Click);
-            // 
             // FormChatGPT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -941,8 +941,8 @@
             this.tabControl.ResumeLayout(false);
             this.tabConversation.ResumeLayout(false);
             this.tabConversation.PerformLayout();
-            this.tabConsole.ResumeLayout(false);
-            this.contextMenuStripRTBConsole.ResumeLayout(false);
+            this.tabJournal.ResumeLayout(false);
+            this.contextMenuStripRTBJournal.ResumeLayout(false);
             this.tabConfiguration.ResumeLayout(false);
             this.panelSettings.ResumeLayout(false);
             this.panelSettings.PerformLayout();
@@ -966,8 +966,8 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabConversation;
-        private System.Windows.Forms.TabPage tabConsole;
-        private System.Windows.Forms.RichTextBox rtbConsole;
+        private System.Windows.Forms.TabPage tabJournal;
+        private System.Windows.Forms.RichTextBox rtbJournal;
         private System.Windows.Forms.TabPage tabConfiguration;
         private System.Windows.Forms.TabPage tabPageInformations;
         private System.Windows.Forms.RichTextBox richTextBoxInformations;
@@ -1030,11 +1030,11 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemRTBConversationClear;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStripRTBConsole;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemRTBConsoleClear;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemRTBConsoleCopy;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripRTBJournal;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemRTBJournalClear;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemRTBJournalCopy;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemRTBConsoleSelectAll;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemRTBJournalSelectAll;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
     }
 }
