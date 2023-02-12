@@ -12,6 +12,7 @@ using Newtonsoft.Json.Serialization;
 using System.Speech.Synthesis;
 using System.Dynamic;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Threading;
 
 namespace ChatGPT_client
 {
@@ -51,11 +52,10 @@ namespace ChatGPT_client
             return Model is not null;
         }
 
-        static public void GetModels()
+        static private T? HTTPChatGPTApiGet<T>(string apiCall)
         {
             if (isApiKeyOk())
             {
-                var apiCall = "https://api.openai.com/v1/models";
                 try
                 {
                     using (var httpClient = new HttpClient())
@@ -71,52 +71,89 @@ namespace ChatGPT_client
                             // Pour historique :
                             _completions.Add(JsonConvert.SerializeObject(JsonConvert.DeserializeObject<dynamic>(json), Formatting.Indented));
 
-                            _Models = JsonConvert.DeserializeObject<Models>(json);
-
+                            return JsonConvert.DeserializeObject<T?>(json);
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    _completions.Add(ex.Message);
+                    throw;
                 }
+            }
+            else
+            {
+                return default(T?);
             }
         }
 
-        private Completion? GetCompletion(Message message)
+        static private T? HTTPChatGPTApiPost<T>(string apiCall, Message message)
         {
-            if (string.IsNullOrWhiteSpace(_openAIApiKey))
-                return null;
+            if (isApiKeyOk())
+            {
+                try
+                {
+                    using (var httpClient = new HttpClient())
+                    {
+                        using (var request = new HttpRequestMessage(new HttpMethod("POST"), apiCall))
+                        {
+                            request.Headers.TryAddWithoutValidation("Authorization", "Bearer " + _openAIApiKey);
+                            var jsonRequest = JsonConvert.SerializeObject(
+                                message,
+                                Formatting.Indented,
+                                new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() }
+                                );
+
+
+                            // Pour historique ;
+                            _completions.Add(JsonConvert.SerializeObject(JsonConvert.DeserializeObject(jsonRequest), Formatting.Indented));
+
+                            request.Content = new StringContent(jsonRequest);
+                            request.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
+                            var response = httpClient.SendAsync(request).Result;
+                            var json = response.Content.ReadAsStringAsync().Result;
+
+                            // Pour historique :
+                            _completions.Add(JsonConvert.SerializeObject(JsonConvert.DeserializeObject<dynamic>(json), Formatting.Indented));
+
+                            return JsonConvert.DeserializeObject<T?>(json);
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+            else
+            {
+                return default(T?);
+            }
+        }
+
+        static public void GetModels()
+        {
+            var apiCall = "https://api.openai.com/v1/models";
+            try
+            {
+                _Models = HTTPChatGPTApiGet<Models>(apiCall);
+            }
+            catch (Exception ex)
+            {
+                _completions.Add(ex.Message);
+            }
+        }
+
+        private Completion? GetCompletion(Message message, int tentatives = 3)
+        {
             var apiCall = "https://api.openai.com/v1/completions";
             try
             {
-                using (var httpClient = new HttpClient())
+                Completion? completion = HTTPChatGPTApiPost<Completion>(apiCall, message);
+                if (completion is not null && completion.Error is not null)
                 {
-                    using (var request = new HttpRequestMessage(new HttpMethod("POST"), apiCall))
+                    switch (completion.Error.Type)
                     {
-                        request.Headers.TryAddWithoutValidation("Authorization", "Bearer " + _openAIApiKey);
-                        var jsonRequest = JsonConvert.SerializeObject(
-                            message,
-                            Newtonsoft.Json.Formatting.Indented,
-                            new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver()}
-                            );
-
-                        
-                        // Pour historique ;
-                        _completions.Add(JsonConvert.SerializeObject(JsonConvert.DeserializeObject(jsonRequest), Formatting.Indented));
-                        
-                        request.Content = new StringContent(jsonRequest);
-                        request.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
-                        var response = httpClient.SendAsync(request).Result;
-                        var json = response.Content.ReadAsStringAsync().Result;
-
-                        // Pour historique :
-                        _completions.Add(JsonConvert.SerializeObject(JsonConvert.DeserializeObject<dynamic>(json), Formatting.Indented));
-
-                        // Pour survie :
-                        Completion completion = JsonConvert.DeserializeObject<Completion>(json);
-                        if (completion is not null && completion.Error is not null)
-                        {
+                        case "invalid_request_error":
                             if (completion.Error.Message.StartsWith("This model's maximum context length is "))
                             {
                                 // "This model's maximum context length is 4097 tokens, however you requested 4107 tokens (107 in your prompt; 4000 for the completion). Please reduce your prompt; or completion length."
@@ -125,15 +162,32 @@ namespace ChatGPT_client
                                 message.Max_tokens = Tokens - (int.Parse(temp) - Tokens);
                                 return GetCompletion(message);
                             }
-                            return null;
-                        }
-                        else
-                        {
-                            if (completion is not null)
-                                Max_tokens = Tokens - completion.Usage.Total_tokens;
-                            return completion;
-                        }
+                            else
+                            {
+                                return null; // new Completion() { Choices = new List<Choice>() { new Choice() { Text = "/!\\ Erreur de requête non gérée. /!\\" } } };
+                            }
+                        case "server_error":
+                            if (completion.Error.Message.StartsWith("That model is currently overloaded with other requests.") && tentatives > 0)
+                            {
+                                // "That model is currently overloaded with other requests. You can retry your request, or contact us through our help center at help.openai.com if the error persists. (Please include the request ID 6c1121ea7ff2592731192cd0fd5d85ec in your message.)"
+                                Thread.Sleep(15);
+                                return GetCompletion(message, --tentatives);
+                            }
+                            else if (completion.Error.Message.StartsWith("The server experienced an error while processing your request.") && tentatives > 0)
+                            {
+                                // "The server experienced an error while processing your request. Sorry about that! You can retry your request, or contact us through our help center at help.openai.com if the error persists."
+                                Thread.Sleep(15);
+                                return GetCompletion(message, --tentatives);
+                            }
+                            return null; // new Completion() { Choices = new List<Choice>() { new Choice() { Text = "/!\\ Erreur serveur non gérée. /!\\" } } }; ;
+                        default: return null; // new Completion() { Choices = new List<Choice>() { new Choice() { Text = "/!\\ Erreur inconnue. /!\\" } } }; ;
                     }
+                }
+                else
+                {
+                    if (completion is not null)
+                        Max_tokens = Tokens - completion.Usage.Total_tokens;
+                    return completion;
                 }
             }
             catch (Exception ex)
