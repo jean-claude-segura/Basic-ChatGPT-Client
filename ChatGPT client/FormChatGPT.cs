@@ -11,6 +11,7 @@ using System.Linq;
 using System.Reflection;
 using System.Security.AccessControl;
 using System.Security.Cryptography;
+using System.Security.Policy;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -132,10 +133,8 @@ namespace ChatGPT_client
                 listViewModelPermissions.Columns.Add(permissionProperty.Name, -2, HorizontalAlignment.Left);
             }
 
-            _chatGPTAPIs.Clear();
             textBoxApiKey.Text = ApiKey;
-            /*ChatGPTInstance.setApiKey(ApiKey);
-            ChatGPTInstance.GetModels();*/
+
             Invoke(updateRichTextListBox2, new Object[] { ChatGPTInstance.Completions });
             if(ChatGPTInstance.Models is not null && ChatGPTInstance.Models.Data is not null) Invoke(updateComboBoxModels, new Object[] { ChatGPTInstance.Models.Data.Select(_ => _.Id).ToArray() });
 
@@ -365,6 +364,7 @@ namespace ChatGPT_client
             hScrollBarPresencePenalty.Value = (int)(_chatGPTAPIs.Presence_penalty * 100);
             hScrollBarFrequencyPenalty.Value = (int)(_chatGPTAPIs.Frequency_penalty * 100);
 
+
             textBoxTemperature.Text = _chatGPTAPIs.Temperature.ToString();
             textBoxTopP.Text = _chatGPTAPIs.Top_p.ToString();
             textBoxPresencePenalty.Text = _chatGPTAPIs.Presence_penalty.ToString();
@@ -447,6 +447,13 @@ namespace ChatGPT_client
                 }
             }
             listViewModelPermissions.ResumeLayout(false);
+
+            textBoxModelObject.Text = _chatGPTAPIs.Model.Object;
+            textBoxModelCreated.Text = _chatGPTAPIs.Model.Created.ToString();
+            textBoxModelOwnedBy.Text = _chatGPTAPIs.Model.Owned_by;
+            textBoxModelRoot.Text = _chatGPTAPIs.Model.Root;
+            textBoxModelParent.Text = (_chatGPTAPIs.Model.Parent ?? "").ToString();
+
         }
 
         private void tabControl_Selected(object sender, TabControlEventArgs e)
@@ -460,6 +467,17 @@ namespace ChatGPT_client
                     toolStripProgressBar1.Visible=true;
                     break;
             }
+        }
+
+        private void richTextBoxInformations_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            //Process.Start(e.LinkText);
+            Process.Start(new ProcessStartInfo { FileName = e.LinkText, UseShellExecute = true });
+        }
+
+        private void rtbChat_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo { FileName = e.LinkText, UseShellExecute = true });
         }
     }
 

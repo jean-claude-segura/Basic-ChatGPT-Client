@@ -108,6 +108,7 @@
             this.rtbChat.Size = new System.Drawing.Size(757, 410);
             this.rtbChat.TabIndex = 0;
             this.rtbChat.Text = "";
+            this.rtbChat.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.rtbChat_LinkClicked);
             // 
             // tbSaisie
             // 
@@ -399,9 +400,9 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(9, 15);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(58, 20);
+            this.label6.Size = new System.Drawing.Size(22, 20);
             this.label6.TabIndex = 44;
-            this.label6.Text = "Models";
+            this.label6.Text = "Id";
             // 
             // comboBoxModels
             // 
@@ -652,6 +653,7 @@
             this.richTextBoxInformations.Size = new System.Drawing.Size(756, 548);
             this.richTextBoxInformations.TabIndex = 0;
             this.richTextBoxInformations.Text = resources.GetString("richTextBoxInformations.Text");
+            this.richTextBoxInformations.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.richTextBoxInformations_LinkClicked);
             // 
             // imageList1
             // 
