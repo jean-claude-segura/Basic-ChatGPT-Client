@@ -77,6 +77,11 @@ namespace ChatGPT_client
                 rtbChat.ResumeLayout();
             }
 
+            foreach (Control control in tabConfiguration.Controls)
+            {
+                control.Enabled = true;
+            }
+
             progressBar1.Style = ProgressBarStyle.Continuous;
             progressBar1.Enabled = false;
             progressBar1.Value = 0;
@@ -86,11 +91,6 @@ namespace ChatGPT_client
 
             tbSaisie.Enabled = true;
             tbSaisie.Focus();
-            foreach (Control control in tabConfiguration.Controls)
-            {
-                control.Enabled = true;
-            }
-
         }
 
         public void UpdateRichTextListBox2Method(List<string> responses)
@@ -199,9 +199,9 @@ namespace ChatGPT_client
 
         private void resetButton_Click(object sender, EventArgs e)
         {
-            _chatGPTAPIs.Clear();
+            _chatGPTAPIs.ClearChat();
             rtbChat.Clear();
-            rtbConsole.Clear();
+            //rtbConsole.Clear();
         }
 
         private void Conversation_Click(object sender, EventArgs e)
@@ -285,7 +285,7 @@ namespace ChatGPT_client
 
             LoadApiKey();
 
-            _chatGPTAPIs.Clear();
+            _chatGPTAPIs.ClearChat();
             textBoxApiKey.Text = ApiKey;
             ChatGPTInstance.setApiKey(ApiKey);
             ChatGPTInstance.GetModels();
@@ -304,7 +304,7 @@ namespace ChatGPT_client
 
             SaveApiKey();
 
-            _chatGPTAPIs.Clear();
+            _chatGPTAPIs.ClearChat();
             ApiKey = textBoxApiKey.Text;
             ChatGPTInstance.setApiKey(ApiKey);
             ChatGPTInstance.GetModels();            
@@ -323,7 +323,7 @@ namespace ChatGPT_client
 
             DeleteApiKey();
 
-            _chatGPTAPIs.Clear();
+            _chatGPTAPIs.ClearChat();
             textBoxApiKey.Text = ApiKey;
             Invoke(updateRichTextListBox2, new Object[] { ChatGPTInstance.Completions });
             if(ChatGPTInstance.Models is not null && ChatGPTInstance.Models.Data is not null) Invoke(updateComboBoxModels, new Object[] { ChatGPTInstance.Models.Data.Select(_ => _.Id).ToArray() });
@@ -517,6 +517,70 @@ namespace ChatGPT_client
         private void textBoxSuffix_TextChanged(object sender, EventArgs e)
         {
             _chatGPTAPIs.Suffix = ((System.Windows.Forms.TextBox)sender).Text;
+        }
+
+        private void toolStripMenuItemRTBConversationSelectAll_Click(object sender, EventArgs e)
+        {
+            if (rtbChat.Text.Length > 0)
+            {
+                rtbChat.Focus();
+                rtbChat.SelectAll();
+            }
+        }
+
+        private void toolStripMenuItemRTBConversationCopy_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(rtbChat.SelectedText))
+            {
+                rtbChat.Copy();
+            }
+        }
+
+        private void toolStripMenuItemRTBConversationClear_Click(object sender, EventArgs e)
+        {
+            if (rtbChat.Text.Length > 0)
+            {
+                _chatGPTAPIs.ClearChat();
+                rtbChat.Clear();
+            }
+        }
+
+        private void contextMenuStripRTBConversation_Opening(object sender, CancelEventArgs e)
+        {
+            toolStripMenuItemRTBConversationSelectAll.Enabled = rtbChat.Text.Length > 0;
+            toolStripMenuItemRTBConversationCopy.Enabled = !string.IsNullOrWhiteSpace(rtbChat.SelectedText);
+            toolStripMenuItemRTBConversationClear.Enabled = rtbChat.Text.Length > 0;
+        }
+
+        private void contextMenuStripRTBConsoleMenuItemClear_Click(object sender, EventArgs e)
+        {
+            if (rtbConsole.Text.Length > 0)
+            {
+                _chatGPTAPIs.ClearLog();
+                rtbConsole.Clear();
+            }
+        }
+
+        private void contextMenuStripRTBConsole_Opening(object sender, CancelEventArgs e)
+        {
+            toolStripMenuItemRTBConsoleClear.Enabled = rtbConsole.Text.Length > 0;
+        }
+
+        private void toolStripMenuItemRTBConsoleCopy_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(rtbConsole.SelectedText))
+            {
+                rtbConsole.Copy();
+            }
+        }
+
+        private void toolStripMenuItemRTBConsoleSelectAll_Click(object sender, EventArgs e)
+        {
+            if (rtbConsole.Text.Length > 0)
+            {
+                rtbConsole.Focus();
+                rtbConsole.SelectAll();
+            }
         }
     }
 

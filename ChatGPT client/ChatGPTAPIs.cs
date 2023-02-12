@@ -250,11 +250,15 @@ namespace ChatGPT_client
             return GetCompletion(message);
         }
 
-        public void Clear()
+        public void ClearChat()
         {
-            _completions.Clear();
+            //_completions.Clear();
             _conversation.Clear();
             Max_tokens = Tokens;
+        }
+        public void ClearLog()
+        {
+            _completions.Clear();
         }
     }
 }

@@ -31,6 +31,12 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormChatGPT));
             this.rtbChat = new System.Windows.Forms.RichTextBox();
+            this.contextMenuStripRTBConversation = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItemRTBConversationCopy = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItemRTBConversationSelectAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItemRTBConversationClear = new System.Windows.Forms.ToolStripMenuItem();
             this.tbSaisie = new System.Windows.Forms.TextBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -41,6 +47,8 @@
             this.resetButton = new System.Windows.Forms.Button();
             this.tabConsole = new System.Windows.Forms.TabPage();
             this.rtbConsole = new System.Windows.Forms.RichTextBox();
+            this.contextMenuStripRTBConsole = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItemRTBConsoleClear = new System.Windows.Forms.ToolStripMenuItem();
             this.tabConfiguration = new System.Windows.Forms.TabPage();
             this.panelSettings = new System.Windows.Forms.Panel();
             this.textBoxSuffix = new System.Windows.Forms.TextBox();
@@ -94,10 +102,16 @@
             this.richTextBoxInformations = new System.Windows.Forms.RichTextBox();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItemRTBConsoleCopy = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItemRTBConsoleSelectAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStripRTBConversation.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabConversation.SuspendLayout();
             this.tabConsole.SuspendLayout();
+            this.contextMenuStripRTBConsole.SuspendLayout();
             this.tabConfiguration.SuspendLayout();
             this.panelSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBestOf)).BeginInit();
@@ -113,6 +127,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbChat.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.rtbChat.ContextMenuStrip = this.contextMenuStripRTBConversation;
             this.rtbChat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.rtbChat.Location = new System.Drawing.Point(7, 8);
             this.rtbChat.Name = "rtbChat";
@@ -122,6 +137,50 @@
             this.rtbChat.TabIndex = 0;
             this.rtbChat.Text = "";
             this.rtbChat.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.rtbChat_LinkClicked);
+            // 
+            // contextMenuStripRTBConversation
+            // 
+            this.contextMenuStripRTBConversation.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStripRTBConversation.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemRTBConversationCopy,
+            this.toolStripSeparator2,
+            this.toolStripMenuItemRTBConversationSelectAll,
+            this.toolStripSeparator1,
+            this.toolStripMenuItemRTBConversationClear});
+            this.contextMenuStripRTBConversation.Name = "contextMenuStrip1";
+            this.contextMenuStripRTBConversation.Size = new System.Drawing.Size(252, 88);
+            this.contextMenuStripRTBConversation.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStripRTBConversation_Opening);
+            // 
+            // toolStripMenuItemRTBConversationCopy
+            // 
+            this.toolStripMenuItemRTBConversationCopy.Name = "toolStripMenuItemRTBConversationCopy";
+            this.toolStripMenuItemRTBConversationCopy.Size = new System.Drawing.Size(251, 24);
+            this.toolStripMenuItemRTBConversationCopy.Text = "Copier";
+            this.toolStripMenuItemRTBConversationCopy.Click += new System.EventHandler(this.toolStripMenuItemRTBConversationCopy_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(248, 6);
+            // 
+            // toolStripMenuItemRTBConversationSelectAll
+            // 
+            this.toolStripMenuItemRTBConversationSelectAll.Name = "toolStripMenuItemRTBConversationSelectAll";
+            this.toolStripMenuItemRTBConversationSelectAll.Size = new System.Drawing.Size(251, 24);
+            this.toolStripMenuItemRTBConversationSelectAll.Text = "Sélectionner tout";
+            this.toolStripMenuItemRTBConversationSelectAll.Click += new System.EventHandler(this.toolStripMenuItemRTBConversationSelectAll_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(248, 6);
+            // 
+            // toolStripMenuItemRTBConversationClear
+            // 
+            this.toolStripMenuItemRTBConversationClear.Name = "toolStripMenuItemRTBConversationClear";
+            this.toolStripMenuItemRTBConversationClear.Size = new System.Drawing.Size(251, 24);
+            this.toolStripMenuItemRTBConversationClear.Text = "Supprimer la conversation";
+            this.toolStripMenuItemRTBConversationClear.Click += new System.EventHandler(this.toolStripMenuItemRTBConversationClear_Click);
             // 
             // tbSaisie
             // 
@@ -249,6 +308,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbConsole.BackColor = System.Drawing.SystemColors.WindowText;
+            this.rtbConsole.ContextMenuStrip = this.contextMenuStripRTBConsole;
             this.rtbConsole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.rtbConsole.Location = new System.Drawing.Point(9, 9);
             this.rtbConsole.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -257,6 +317,26 @@
             this.rtbConsole.Size = new System.Drawing.Size(755, 573);
             this.rtbConsole.TabIndex = 0;
             this.rtbConsole.Text = "";
+            // 
+            // contextMenuStripRTBConsole
+            // 
+            this.contextMenuStripRTBConsole.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStripRTBConsole.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemRTBConsoleCopy,
+            this.toolStripSeparator4,
+            this.toolStripMenuItemRTBConsoleSelectAll,
+            this.toolStripSeparator3,
+            this.toolStripMenuItemRTBConsoleClear});
+            this.contextMenuStripRTBConsole.Name = "contextMenuStripRTBConsole";
+            this.contextMenuStripRTBConsole.Size = new System.Drawing.Size(211, 116);
+            this.contextMenuStripRTBConsole.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStripRTBConsole_Opening);
+            // 
+            // toolStripMenuItemRTBConsoleClear
+            // 
+            this.toolStripMenuItemRTBConsoleClear.Name = "toolStripMenuItemRTBConsoleClear";
+            this.toolStripMenuItemRTBConsoleClear.Size = new System.Drawing.Size(210, 24);
+            this.toolStripMenuItemRTBConsoleClear.Text = "Vider la fenêtre";
+            this.toolStripMenuItemRTBConsoleClear.Click += new System.EventHandler(this.contextMenuStripRTBConsoleMenuItemClear_Click);
             // 
             // tabConfiguration
             // 
@@ -817,6 +897,30 @@
             this.imageList1.Images.SetKeyName(2, "settings.png");
             this.imageList1.Images.SetKeyName(3, "comment-info.png");
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(207, 6);
+            // 
+            // toolStripMenuItemRTBConsoleCopy
+            // 
+            this.toolStripMenuItemRTBConsoleCopy.Name = "toolStripMenuItemRTBConsoleCopy";
+            this.toolStripMenuItemRTBConsoleCopy.Size = new System.Drawing.Size(210, 24);
+            this.toolStripMenuItemRTBConsoleCopy.Text = "Copier";
+            this.toolStripMenuItemRTBConsoleCopy.Click += new System.EventHandler(this.toolStripMenuItemRTBConsoleCopy_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(207, 6);
+            // 
+            // toolStripMenuItemRTBConsoleSelectAll
+            // 
+            this.toolStripMenuItemRTBConsoleSelectAll.Name = "toolStripMenuItemRTBConsoleSelectAll";
+            this.toolStripMenuItemRTBConsoleSelectAll.Size = new System.Drawing.Size(210, 24);
+            this.toolStripMenuItemRTBConsoleSelectAll.Text = "Sélectionner tout";
+            this.toolStripMenuItemRTBConsoleSelectAll.Click += new System.EventHandler(this.toolStripMenuItemRTBConsoleSelectAll_Click);
+            // 
             // FormChatGPT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -831,12 +935,14 @@
             this.Name = "FormChatGPT";
             this.Text = "Basic ChatGPT Client";
             this.Shown += new System.EventHandler(this.Form1_Shown);
+            this.contextMenuStripRTBConversation.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.tabControl.ResumeLayout(false);
             this.tabConversation.ResumeLayout(false);
             this.tabConversation.PerformLayout();
             this.tabConsole.ResumeLayout(false);
+            this.contextMenuStripRTBConsole.ResumeLayout(false);
             this.tabConfiguration.ResumeLayout(false);
             this.panelSettings.ResumeLayout(false);
             this.panelSettings.PerformLayout();
@@ -918,6 +1024,18 @@
         private System.Windows.Forms.NumericUpDown numericUpDownBestOf;
         private System.Windows.Forms.TextBox textBoxSuffix;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripRTBConversation;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemRTBConversationSelectAll;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemRTBConversationCopy;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemRTBConversationClear;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripRTBConsole;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemRTBConsoleClear;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemRTBConsoleCopy;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemRTBConsoleSelectAll;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
     }
 }
 
