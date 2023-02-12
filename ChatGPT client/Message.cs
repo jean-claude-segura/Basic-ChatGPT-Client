@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace ChatGPT_client
 {
-    public class Message
+    public class Message : ChatGPTParameters
     {
         public Message(string model, string prompt, uint max_tokens,
-              decimal temperature, decimal top_p, decimal frequency_penalty, decimal presence_penalty, List<string>? stop = null, string? suffix = null)
+              decimal temperature, decimal top_p, decimal frequency_penalty, decimal presence_penalty, List<string>? stop = null, string? suffix = null, bool stream = false)
         {
             Prompt = prompt;
             Max_tokens = max_tokens;
@@ -21,10 +21,11 @@ namespace ChatGPT_client
             Stop = stop;
             Model = model;
             Suffix = suffix;
+            Stream = stream;
         }
 
         public Message(string model, List<string> history, uint max_tokens,
-              decimal temperature, decimal top_p, decimal frequency_penalty, decimal presence_penalty, List<string>? stop = null, string? suffix = null)
+              decimal temperature, decimal top_p, decimal frequency_penalty, decimal presence_penalty, List<string>? stop = null, string? suffix = null, bool stream = false)
         {
             Prompt = "";
             foreach (var item in history)
@@ -38,20 +39,10 @@ namespace ChatGPT_client
             Stop = stop;
             Model = model;
             Suffix= suffix;
+            Stream = stream;
         }
 
         public string Model { get; set; } = "text-davinci-003";
         public string Prompt;
-        public uint Max_tokens { get; set; }
-        public decimal Temperature { get; set; }
-        public decimal Top_p { get; set; }
-        public decimal Frequency_penalty { get; set; }
-        public decimal Presence_penalty { get; set; }
-        public bool Echo { get; set; } = false;
-        public List<string>? Stop { get; set; } = null;
-        public int N { get; set; } = 1;
-        public int Best_of { get; set; } = 1;
-        public string? Suffix { get; set; } = null;
-        public uint? Logprobs { get; set; } = null;
     }
 }

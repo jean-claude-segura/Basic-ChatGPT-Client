@@ -16,28 +16,31 @@ using System.Threading;
 
 namespace ChatGPT_client
 {
-    public class ChatGPTInstance
+    public class ChatGPTParameters
+    {
+        public uint Max_tokens { get; set; } = 4000;
+        public decimal Temperature { get; set; } = 0;
+        public decimal Top_p { get; set; } = 1;
+        public decimal Frequency_penalty { get; set; } = 0;
+        public decimal Presence_penalty { get; set; } = 0;
+        public bool Echo { get; set; } = false;
+        public List<string>? Stop { get; set; } = null;
+        public uint N { get; set; } = 1;
+        public uint Best_of { get; set; } = 1;
+        public string? Suffix { get; set; } = null;
+        public uint? Logprobs { get; set; } = null;
+        public bool Stream { get; set; } = false;
+    }
+
+    public class ChatGPTInstance : ChatGPTParameters
     {
         static private Models? _Models = null;
         static public Models Models { get { return _Models; } }
         static private List<string> _completions = new List<string>();
         static public List<string> Completions { get => _completions; }
         static private string? _openAIApiKey { get; set; } = null;
-        public uint Tokens { get; set; }
+        public uint Tokens { get; set; } = 4000;
         public Model? Model { get; private set; } = null;
-        public uint Max_tokens { get; set; }
-        public decimal Temperature { get; set; }
-        public decimal Top_p { get; set; }
-        public decimal Frequency_penalty { get; set; }
-        public decimal Presence_penalty { get; set; }
-        public bool Echo { get; set; } = false;
-        public List<string>? Stop { get; set; } = null;
-        public uint N { get; set; } = 1;
-        public uint Best_of { get; set; } = 1;
-        public bool Stream { get; set; } = false;
-        public string? Suffix { get; set; } = null;
-        public uint? Logprobs { get; set; } = null;
-
         private List<Tuple<string, string>> _conversation { get; set; } = new List<Tuple<string, string>>();
         public List<Tuple<string, string>> Conversation { get => _conversation; }
 
