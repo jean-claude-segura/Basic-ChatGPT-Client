@@ -118,7 +118,7 @@
             this.rtbChat.Name = "rtbChat";
             this.rtbChat.ReadOnly = true;
             this.rtbChat.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.rtbChat.Size = new System.Drawing.Size(757, 524);
+            this.rtbChat.Size = new System.Drawing.Size(757, 448);
             this.rtbChat.TabIndex = 0;
             this.rtbChat.Text = "";
             this.rtbChat.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.rtbChat_LinkClicked);
@@ -130,7 +130,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbSaisie.Enabled = false;
             this.tbSaisie.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tbSaisie.Location = new System.Drawing.Point(7, 538);
+            this.tbSaisie.Location = new System.Drawing.Point(7, 462);
             this.tbSaisie.Multiline = true;
             this.tbSaisie.Name = "tbSaisie";
             this.tbSaisie.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -145,7 +145,7 @@
             this.progressBar1.BackColor = System.Drawing.Color.DarkRed;
             this.progressBar1.Enabled = false;
             this.progressBar1.ForeColor = System.Drawing.Color.Red;
-            this.progressBar1.Location = new System.Drawing.Point(7, 631);
+            this.progressBar1.Location = new System.Drawing.Point(7, 555);
             this.progressBar1.MarqueeAnimationSpeed = 1;
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -160,7 +160,7 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.toolStripProgressBar1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 707);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 631);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
             this.statusStrip1.Size = new System.Drawing.Size(780, 22);
@@ -199,7 +199,7 @@
             this.tabControl.Multiline = true;
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(780, 701);
+            this.tabControl.Size = new System.Drawing.Size(780, 625);
             this.tabControl.TabIndex = 4;
             this.tabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl_Selected);
             this.tabControl.Click += new System.EventHandler(this.Conversation_Click);
@@ -216,7 +216,7 @@
             this.tabConversation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabConversation.Name = "tabConversation";
             this.tabConversation.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabConversation.Size = new System.Drawing.Size(772, 668);
+            this.tabConversation.Size = new System.Drawing.Size(772, 592);
             this.tabConversation.TabIndex = 0;
             // 
             // resetButton
@@ -224,7 +224,7 @@
             this.resetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.resetButton.BackgroundImage = global::ChatGPT_client.Properties.Resources.reset_password;
             this.resetButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.resetButton.Location = new System.Drawing.Point(735, 631);
+            this.resetButton.Location = new System.Drawing.Point(735, 555);
             this.resetButton.Name = "resetButton";
             this.resetButton.Size = new System.Drawing.Size(29, 29);
             this.resetButton.TabIndex = 3;
@@ -240,7 +240,7 @@
             this.tabConsole.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabConsole.Name = "tabConsole";
             this.tabConsole.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabConsole.Size = new System.Drawing.Size(772, 668);
+            this.tabConsole.Size = new System.Drawing.Size(772, 592);
             this.tabConsole.TabIndex = 1;
             // 
             // rtbConsole
@@ -254,7 +254,7 @@
             this.rtbConsole.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.rtbConsole.Name = "rtbConsole";
             this.rtbConsole.ReadOnly = true;
-            this.rtbConsole.Size = new System.Drawing.Size(755, 649);
+            this.rtbConsole.Size = new System.Drawing.Size(755, 573);
             this.rtbConsole.TabIndex = 0;
             this.rtbConsole.Text = "";
             // 
@@ -267,7 +267,7 @@
             this.tabConfiguration.Location = new System.Drawing.Point(4, 29);
             this.tabConfiguration.Name = "tabConfiguration";
             this.tabConfiguration.Padding = new System.Windows.Forms.Padding(3);
-            this.tabConfiguration.Size = new System.Drawing.Size(772, 668);
+            this.tabConfiguration.Size = new System.Drawing.Size(772, 592);
             this.tabConfiguration.TabIndex = 2;
             // 
             // panelSettings
@@ -303,13 +303,13 @@
             this.panelSettings.Controls.Add(this.label2);
             this.panelSettings.Location = new System.Drawing.Point(8, 65);
             this.panelSettings.Name = "panelSettings";
-            this.panelSettings.Size = new System.Drawing.Size(754, 521);
+            this.panelSettings.Size = new System.Drawing.Size(754, 524);
             this.panelSettings.TabIndex = 18;
             // 
             // textBoxSuffix
             // 
             this.textBoxSuffix.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxSuffix.Location = new System.Drawing.Point(139, 281);
+            this.textBoxSuffix.Location = new System.Drawing.Point(139, 284);
             this.textBoxSuffix.Name = "textBoxSuffix";
             this.textBoxSuffix.Size = new System.Drawing.Size(604, 27);
             this.textBoxSuffix.TabIndex = 41;
@@ -319,7 +319,7 @@
             // 
             this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(3, 284);
+            this.label15.Location = new System.Drawing.Point(3, 287);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(46, 20);
             this.label15.TabIndex = 40;
@@ -329,7 +329,7 @@
             // 
             this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(579, 250);
+            this.label14.Location = new System.Drawing.Point(579, 253);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(57, 20);
             this.label14.TabIndex = 39;
@@ -339,7 +339,7 @@
             // 
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(361, 250);
+            this.label13.Location = new System.Drawing.Point(361, 253);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(20, 20);
             this.label13.TabIndex = 38;
@@ -348,7 +348,7 @@
             // numericUpDownBestOf
             // 
             this.numericUpDownBestOf.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.numericUpDownBestOf.Location = new System.Drawing.Point(642, 248);
+            this.numericUpDownBestOf.Location = new System.Drawing.Point(642, 251);
             this.numericUpDownBestOf.Name = "numericUpDownBestOf";
             this.numericUpDownBestOf.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.numericUpDownBestOf.Size = new System.Drawing.Size(101, 27);
@@ -358,7 +358,7 @@
             // numericUpDownN
             // 
             this.numericUpDownN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.numericUpDownN.Location = new System.Drawing.Point(387, 248);
+            this.numericUpDownN.Location = new System.Drawing.Point(387, 251);
             this.numericUpDownN.Name = "numericUpDownN";
             this.numericUpDownN.Size = new System.Drawing.Size(101, 27);
             this.numericUpDownN.TabIndex = 36;
@@ -367,7 +367,7 @@
             // textBoxMaxTokens
             // 
             this.textBoxMaxTokens.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxMaxTokens.Location = new System.Drawing.Point(139, 315);
+            this.textBoxMaxTokens.Location = new System.Drawing.Point(139, 318);
             this.textBoxMaxTokens.Name = "textBoxMaxTokens";
             this.textBoxMaxTokens.ReadOnly = true;
             this.textBoxMaxTokens.Size = new System.Drawing.Size(59, 27);
@@ -377,7 +377,7 @@
             // 
             this.hScrollBarMaxTokens.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.hScrollBarMaxTokens.LargeChange = 1;
-            this.hScrollBarMaxTokens.Location = new System.Drawing.Point(241, 315);
+            this.hScrollBarMaxTokens.Location = new System.Drawing.Point(241, 318);
             this.hScrollBarMaxTokens.Maximum = 4000;
             this.hScrollBarMaxTokens.Name = "hScrollBarMaxTokens";
             this.hScrollBarMaxTokens.Size = new System.Drawing.Size(502, 26);
@@ -387,7 +387,7 @@
             // 
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(3, 321);
+            this.label12.Location = new System.Drawing.Point(3, 324);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(86, 20);
             this.label12.TabIndex = 33;
@@ -397,7 +397,7 @@
             // 
             this.checkBoxEcho.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBoxEcho.AutoSize = true;
-            this.checkBoxEcho.Location = new System.Drawing.Point(139, 249);
+            this.checkBoxEcho.Location = new System.Drawing.Point(139, 252);
             this.checkBoxEcho.Name = "checkBoxEcho";
             this.checkBoxEcho.Size = new System.Drawing.Size(63, 24);
             this.checkBoxEcho.TabIndex = 32;
@@ -410,7 +410,7 @@
             this.checkBoxStream.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBoxStream.AutoSize = true;
             this.checkBoxStream.Enabled = false;
-            this.checkBoxStream.Location = new System.Drawing.Point(3, 249);
+            this.checkBoxStream.Location = new System.Drawing.Point(3, 252);
             this.checkBoxStream.Name = "checkBoxStream";
             this.checkBoxStream.Size = new System.Drawing.Size(78, 24);
             this.checkBoxStream.TabIndex = 31;
@@ -566,7 +566,7 @@
             // textBoxTopP
             // 
             this.textBoxTopP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxTopP.Location = new System.Drawing.Point(139, 385);
+            this.textBoxTopP.Location = new System.Drawing.Point(139, 388);
             this.textBoxTopP.Name = "textBoxTopP";
             this.textBoxTopP.ReadOnly = true;
             this.textBoxTopP.Size = new System.Drawing.Size(59, 27);
@@ -576,7 +576,7 @@
             // 
             this.hScrollBarTopP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.hScrollBarTopP.LargeChange = 1;
-            this.hScrollBarTopP.Location = new System.Drawing.Point(241, 385);
+            this.hScrollBarTopP.Location = new System.Drawing.Point(241, 388);
             this.hScrollBarTopP.Name = "hScrollBarTopP";
             this.hScrollBarTopP.Size = new System.Drawing.Size(502, 26);
             this.hScrollBarTopP.TabIndex = 29;
@@ -586,7 +586,7 @@
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 391);
+            this.label5.Location = new System.Drawing.Point(3, 394);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(49, 20);
             this.label5.TabIndex = 28;
@@ -597,7 +597,7 @@
             this.buttonLoadSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonLoadSettings.BackgroundImage = global::ChatGPT_client.Properties.Resources.refresh;
             this.buttonLoadSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonLoadSettings.Location = new System.Drawing.Point(679, 484);
+            this.buttonLoadSettings.Location = new System.Drawing.Point(679, 487);
             this.buttonLoadSettings.Name = "buttonLoadSettings";
             this.buttonLoadSettings.Size = new System.Drawing.Size(29, 29);
             this.buttonLoadSettings.TabIndex = 27;
@@ -609,7 +609,7 @@
             this.buttonSaveSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonSaveSettings.BackgroundImage = global::ChatGPT_client.Properties.Resources.disk;
             this.buttonSaveSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonSaveSettings.Location = new System.Drawing.Point(714, 484);
+            this.buttonSaveSettings.Location = new System.Drawing.Point(714, 487);
             this.buttonSaveSettings.Name = "buttonSaveSettings";
             this.buttonSaveSettings.Size = new System.Drawing.Size(29, 29);
             this.buttonSaveSettings.TabIndex = 26;
@@ -619,7 +619,7 @@
             // textBoxFrequencyPenalty
             // 
             this.textBoxFrequencyPenalty.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxFrequencyPenalty.Location = new System.Drawing.Point(139, 455);
+            this.textBoxFrequencyPenalty.Location = new System.Drawing.Point(139, 458);
             this.textBoxFrequencyPenalty.Name = "textBoxFrequencyPenalty";
             this.textBoxFrequencyPenalty.ReadOnly = true;
             this.textBoxFrequencyPenalty.Size = new System.Drawing.Size(59, 27);
@@ -628,7 +628,7 @@
             // textBoxPresencePenalty
             // 
             this.textBoxPresencePenalty.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxPresencePenalty.Location = new System.Drawing.Point(139, 420);
+            this.textBoxPresencePenalty.Location = new System.Drawing.Point(139, 423);
             this.textBoxPresencePenalty.Name = "textBoxPresencePenalty";
             this.textBoxPresencePenalty.ReadOnly = true;
             this.textBoxPresencePenalty.Size = new System.Drawing.Size(59, 27);
@@ -637,7 +637,7 @@
             // textBoxTemperature
             // 
             this.textBoxTemperature.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxTemperature.Location = new System.Drawing.Point(139, 350);
+            this.textBoxTemperature.Location = new System.Drawing.Point(139, 353);
             this.textBoxTemperature.Name = "textBoxTemperature";
             this.textBoxTemperature.ReadOnly = true;
             this.textBoxTemperature.Size = new System.Drawing.Size(59, 27);
@@ -647,7 +647,7 @@
             // 
             this.hScrollBarFrequencyPenalty.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.hScrollBarFrequencyPenalty.LargeChange = 1;
-            this.hScrollBarFrequencyPenalty.Location = new System.Drawing.Point(241, 455);
+            this.hScrollBarFrequencyPenalty.Location = new System.Drawing.Point(241, 458);
             this.hScrollBarFrequencyPenalty.Maximum = 200;
             this.hScrollBarFrequencyPenalty.Minimum = -200;
             this.hScrollBarFrequencyPenalty.Name = "hScrollBarFrequencyPenalty";
@@ -659,7 +659,7 @@
             // 
             this.hScrollBarPresencePenalty.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.hScrollBarPresencePenalty.LargeChange = 1;
-            this.hScrollBarPresencePenalty.Location = new System.Drawing.Point(241, 420);
+            this.hScrollBarPresencePenalty.Location = new System.Drawing.Point(241, 423);
             this.hScrollBarPresencePenalty.Maximum = 200;
             this.hScrollBarPresencePenalty.Minimum = -200;
             this.hScrollBarPresencePenalty.Name = "hScrollBarPresencePenalty";
@@ -671,7 +671,7 @@
             // 
             this.hScrollBarTemperature.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.hScrollBarTemperature.LargeChange = 1;
-            this.hScrollBarTemperature.Location = new System.Drawing.Point(241, 350);
+            this.hScrollBarTemperature.Location = new System.Drawing.Point(241, 353);
             this.hScrollBarTemperature.Maximum = 99;
             this.hScrollBarTemperature.Name = "hScrollBarTemperature";
             this.hScrollBarTemperature.Size = new System.Drawing.Size(502, 26);
@@ -682,7 +682,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 461);
+            this.label4.Location = new System.Drawing.Point(3, 464);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(131, 20);
             this.label4.TabIndex = 19;
@@ -692,7 +692,7 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 426);
+            this.label3.Location = new System.Drawing.Point(3, 429);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(122, 20);
             this.label3.TabIndex = 18;
@@ -702,7 +702,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 356);
+            this.label2.Location = new System.Drawing.Point(3, 359);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(93, 20);
             this.label2.TabIndex = 17;
@@ -790,7 +790,7 @@
             this.tabPageInformations.ImageIndex = 3;
             this.tabPageInformations.Location = new System.Drawing.Point(4, 29);
             this.tabPageInformations.Name = "tabPageInformations";
-            this.tabPageInformations.Size = new System.Drawing.Size(772, 668);
+            this.tabPageInformations.Size = new System.Drawing.Size(772, 592);
             this.tabPageInformations.TabIndex = 3;
             // 
             // richTextBoxInformations
@@ -802,7 +802,7 @@
             this.richTextBoxInformations.Location = new System.Drawing.Point(8, 3);
             this.richTextBoxInformations.Name = "richTextBoxInformations";
             this.richTextBoxInformations.ReadOnly = true;
-            this.richTextBoxInformations.Size = new System.Drawing.Size(756, 662);
+            this.richTextBoxInformations.Size = new System.Drawing.Size(756, 586);
             this.richTextBoxInformations.TabIndex = 0;
             this.richTextBoxInformations.Text = resources.GetString("richTextBoxInformations.Text");
             this.richTextBoxInformations.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.richTextBoxInformations_LinkClicked);
@@ -823,11 +823,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.ClientSize = new System.Drawing.Size(780, 729);
+            this.ClientSize = new System.Drawing.Size(780, 653);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.statusStrip1);
             this.DoubleBuffered = true;
-            this.MinimumSize = new System.Drawing.Size(798, 662);
+            this.MinimumSize = new System.Drawing.Size(798, 700);
             this.Name = "FormChatGPT";
             this.Text = "Basic ChatGPT Client";
             this.Shown += new System.EventHandler(this.Form1_Shown);
