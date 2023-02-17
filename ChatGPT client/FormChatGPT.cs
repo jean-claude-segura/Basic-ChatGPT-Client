@@ -19,7 +19,6 @@ using System.Windows.Forms;
 using static ChatGPT_client.FormChatGPT;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using Timer = System.Windows.Forms.Timer;
 
 namespace ChatGPT_client
 {
