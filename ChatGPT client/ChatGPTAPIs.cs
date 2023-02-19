@@ -260,7 +260,7 @@ namespace ChatGPT_client
         {
             _conversation.Add(new Tuple<string, string>("HUMAN:", prompt));
 
-            var message = new Message(Model.Id, _conversation.Select(_ => _.Item1 + _.Item2).ToList().Concat(new List<string>() { "AI:" }).ToList(), Max_tokens, Temperature, Top_p, Frequency_penalty, Presence_penalty, new() { "HUMAN:" }, Suffix, Stream);
+            var message = new Message(Model.Id, _conversation.Select(_ => _.Item1 + _.Item2).ToList().Concat(new List<string>() { "AI:" }).ToList(), Max_tokens, Temperature, Top_p, Frequency_penalty, Presence_penalty, new() { "HUMAN:" }, Suffix, Stream, Echo);
 
             var res = GetCompletion(message);
 
@@ -276,7 +276,7 @@ namespace ChatGPT_client
         /// <returns></returns>
         public Completion? GetCompletionSingle(string prompt)
         {
-            var message = new Message(Model.Id, prompt, Max_tokens, Temperature, Top_p, Frequency_penalty, Presence_penalty, null, Suffix, Stream);
+            var message = new Message(Model.Id, prompt, Max_tokens, Temperature, Top_p, Frequency_penalty, Presence_penalty, null, Suffix, Stream, Echo);
 
             return GetCompletion(message);
         }

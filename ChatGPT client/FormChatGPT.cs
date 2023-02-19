@@ -609,6 +609,7 @@ namespace ChatGPT_client
         public void Run()
         {
             var response = ChatGPTAPIs.GetCompletionHistorized(Text);
+            //var response = ChatGPTAPIs.GetCompletionSingle(Text);
             ThreadForm.Invoke(ThreadForm.updateRichTextListBox1, new Object[] { response });
             ThreadForm.Invoke(ThreadForm.updateRichTextListBox2, new Object[] { ChatGPTInstance.Completions });
         }

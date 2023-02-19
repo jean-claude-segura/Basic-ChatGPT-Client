@@ -10,7 +10,7 @@ namespace ChatGPT_client
     public class Message : ChatGPTParameters
     {
         public Message(string model, string prompt, uint max_tokens,
-              decimal temperature, decimal top_p, decimal frequency_penalty, decimal presence_penalty, List<string>? stop = null, string? suffix = null, bool stream = false)
+              decimal temperature, decimal top_p, decimal frequency_penalty, decimal presence_penalty, List<string>? stop = null, string? suffix = null, bool stream = false, bool echo = false)
         {
             Prompt = prompt;
             Max_tokens = max_tokens;
@@ -22,10 +22,11 @@ namespace ChatGPT_client
             Model = model;
             Suffix = suffix;
             Stream = stream;
+            Echo = echo;
         }
 
         public Message(string model, List<string> history, uint max_tokens,
-              decimal temperature, decimal top_p, decimal frequency_penalty, decimal presence_penalty, List<string>? stop = null, string? suffix = null, bool stream = false)
+              decimal temperature, decimal top_p, decimal frequency_penalty, decimal presence_penalty, List<string>? stop = null, string? suffix = null, bool stream = false, bool echo = false)
         {
             Prompt = "";
             foreach (var item in history)
@@ -40,6 +41,7 @@ namespace ChatGPT_client
             Model = model;
             Suffix= suffix;
             Stream = stream;
+            Echo= echo;
         }
 
         public string Model { get; set; } = "text-davinci-003";
