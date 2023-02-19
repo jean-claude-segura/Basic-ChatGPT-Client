@@ -13,6 +13,8 @@ using System.Speech.Synthesis;
 using System.Dynamic;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Threading;
+using System.Diagnostics;
+using System.IO;
 
 namespace ChatGPT_client
 {
@@ -111,12 +113,11 @@ namespace ChatGPT_client
                 {
                     using (var httpClient = new HttpClient())
                     {
-                        using (var request = new HttpRequestMessage(new HttpMethod("POST"), apiCall))
+                        using (var httpContent = new StringContent(jsonRequest))
                         {
-                            request.Headers.TryAddWithoutValidation("Authorization", "Bearer " + _openAIApiKey);
-                            request.Content = new StringContent(jsonRequest);
-                            request.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
-                            var response = httpClient.SendAsync(request).Result;
+                            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _openAIApiKey);
+                            httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                            var response = httpClient.PostAsync(apiCall, httpContent).Result;
                             return response.Content.ReadAsStringAsync().Result;
                         }
                     }
