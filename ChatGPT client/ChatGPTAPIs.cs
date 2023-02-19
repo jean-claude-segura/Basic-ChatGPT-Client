@@ -67,14 +67,9 @@ namespace ChatGPT_client
                 {
                     using (var httpClient = new HttpClient())
                     {
-                        using (var request = new HttpRequestMessage(new HttpMethod("GET"), apiCall))
-                        {
-                            request.Headers.TryAddWithoutValidation("Authorization", "Bearer " + _openAIApiKey);
-
-                            var response = httpClient.SendAsync(request).Result;
-
-                            return response.Content.ReadAsStringAsync().Result;
-                        }
+                        httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _openAIApiKey);
+                        var response = httpClient.GetAsync(apiCall).Result;
+                        return response.Content.ReadAsStringAsync().Result;
                     }
                 }
                 catch (Exception)
